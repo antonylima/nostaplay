@@ -280,7 +280,6 @@ echo "<script>
         
         /*-------------------------------------------------------------------------*/ 
         
-        
         else {
             //for (let alb in arrayList) {
                     var item = document.createElement('li')
