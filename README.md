@@ -1,2 +1,2 @@
 # Nostaplay
-## A Simple and useful music player 
+## A simple and useful music player 
