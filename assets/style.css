@@ -1,6 +1,8 @@
 *{
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 @font-face {
   font-family: uc;
@@ -86,14 +88,13 @@ body {
   /* background-image: linear-gradient(gray, white, gray); */
   background-image: url("aço3.jpg");
   background-size: cover;
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2%;
   left: 0%;
   height: fit-content;
-  width: 95%;
+  width: 96%;
 }
 
 #main {
@@ -223,12 +224,14 @@ button{
 #res {
   z-index: 0;
   width: 70%;
+  margin-top: 330px;
+  margin-left: 2%;
 }
 
 ul {
-  margin-top: 400px;
+  
   width: fit-content;
-  margin-left: -10%;
+  
 }
 
 li {
@@ -238,8 +241,7 @@ li {
   padding: 3px 0 3px 0;
   text-wrap: nowrap;
   height: fit-content;
-  margin-bottom: 10px;
-  
+  margin-bottom: 5px;
 }
 
 li:hover {
@@ -289,16 +291,22 @@ li:active {
   }
 
   ul {
-    margin-top: 2%;
   }
 
   #res {
     width: 30%;
-    position: relative;
-    left: 55%;
+    margin-top: 1%;
+    margin-left: 56%;
   }
   ::-webkit-scrollbar {
     display: none;
+  }
+}
+
+@media screen and (orientation:landscape) and (min-width:1300px){
+  #res {
+    width: 30%;
+    position: relative;
   }
 }
 
@@ -385,7 +393,76 @@ li:active {
   }
 }
 */
+
+
+@media screen and (min-width:360px) and (orientation:portrait) {
+  ul {
+    margin-top: 360px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width:390px) and (orientation:portrait) {
+  ul {
+    margin-top: 380px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width:410px) and (orientation:portrait) {
+  ul {
+    margin-top: 400px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width:440px) and (orientation:portrait) {
+  ul {
+    margin-top: 420px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width:470px) and (orientation:portrait) {
+  ul {
+    margin-top: 440px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
 @media screen and (min-width:500px) and (orientation:portrait) {
+  ul {
+    margin-top: 460px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:530px) and (orientation:portrait) {
+  ul {
+    margin-top: 480px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:560px) and (orientation:portrait) {
   ul {
     margin-top: 500px;
   }
@@ -394,12 +471,9 @@ li:active {
   }
 
 }
-
-@media screen and (min-width:768px) and (orientation:portrait) {
+@media screen and (min-width:590px) and (orientation:portrait) {
   ul {
-    margin-top: 630px;
-    margin-left: -3%;
-    
+    margin-top: 520px;
   }
   ::-webkit-scrollbar {
     display: none;
@@ -407,11 +481,90 @@ li:active {
 
 }
 
-@media screen and (min-width:820px) and (orientation:portrait) {
+@media screen and (min-width:610px) and (orientation:portrait) {
+  ul {
+    margin-top: 540px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:640px) and (orientation:portrait) {
+  ul {
+    margin-top: 560px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:670px) and (orientation:portrait) {
+  ul {
+    margin-top: 580px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:700px) and (orientation:portrait) {
+  ul {
+    margin-top: 600px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:730px) and (orientation:portrait) {
+  ul {
+    margin-top: 620px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:760px) and (orientation:portrait) {
+  ul {
+    margin-top: 640px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:790px) and (orientation:portrait) {
+  ul {
+    margin-top: 660px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:810px) and (orientation:portrait) {
+  ul {
+    margin-top: 680px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:840px) and (orientation:portrait) {
   ul {
     margin-top: 700px;
-    margin-left: -3%;
-    
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:870px) and (orientation:portrait) {
+  ul {
+    margin-top: 720px;
   }
   ::-webkit-scrollbar {
     display: none;
@@ -419,22 +572,56 @@ li:active {
 
 }
 
-@media screen and (min-width:1024px) and (orientation:portrait) {
+@media screen and (min-width:900px) and (orientation:portrait) {
+  ul {
+    margin-top: 740px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:930px) and (orientation:portrait) {
+  ul {
+    margin-top: 760px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:960px) and (orientation:portrait) {
+  ul {
+    margin-top: 780px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+@media screen and (min-width:980px) and (orientation:portrait) {
   ul {
     margin-top: 800px;
-    margin-left: -3%;
-    
   }
   ::-webkit-scrollbar {
     display: none;
   }
 
 }
-
-@media screen and (min-width:1559px) and (orientation:portrait) {
+@media screen and (min-width:1010px) and (orientation:portrait) {
   ul {
-    margin-top: 850px;
-    margin-left: -3%;
+    margin-top: 820px;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+}
+
+ 
+/* @media screen and (min-width:530px) and (orientation:portrait) {
+  ul {
+    margin-top: 500px;
     
   }
   ::-webkit-scrollbar {
@@ -442,6 +629,16 @@ li:active {
   }
 
 }
+@media screen and (min-width:530px) and (orientation:portrait) {
+  ul {
+    margin-top: 500px;
+    
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+} */
 
 /*
   @media screen and (min-width:720px){

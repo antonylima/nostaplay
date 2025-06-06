@@ -52,8 +52,10 @@
     </script>
 </body>
 </html>
+
+
 <?php
-$srcs = array("","SERTANEJO/");
+$srcs = array("SERTANEJO/","");
 foreach( $srcs as $src) {
     if (dir($src)) {
         scanner($src);
@@ -161,13 +163,13 @@ echo "<script>
         if (termo.value != "" && termo.value != null && jsondb) {
             busca = true;
             result.innerHTML = ""
-            //console.clear();
+            console.clear();
             var arrayList = [];
             //var unique = ""
             var lista = document.createElement('ul')
             result.appendChild(lista)
             testador = false
-            //console.log('Termo pesquisado: ' + termo.value);
+            console.log('Termo pesquisado: ' + termo.value);
             chave1 = termo.value.toUpperCase();
             chave2 = termo.value.toLowerCase();
             chave3 = termo.value;
@@ -176,14 +178,14 @@ echo "<script>
                 if (i.includes(`${chave1}`) || i.includes(`${chave2}`) || i.includes(`${chave3}`) || i.includes(`${chave4}`)) {
                     testador = true
                     termo.value = null;
-                    //console.log("Resutados:")
+                    console.log("Resutados:")
                     arrayList.push(i);
                 }
             }
             if (testador === false) {
-                //console.log("Nothing found")
+                console.log("Nothing found")
             }
-            //console.log(arrayList.length);
+            console.log(arrayList.length);
             arrayList.sort();
             if (arrayList.length > 1) {
                 for (let alb in arrayList) {
@@ -236,8 +238,9 @@ echo "<script>
                     newtxt = temptxt.join(" ")
                     if(newtxt.length > 30){
                             newtxt = newtxt.substring(0,29) + '...';
-                        }  
-                    //console.log(newtxt);
+                        }
+                    
+                    console.log(newtxt);
                     item.textContent = newtxt
                     item.addEventListener("click", function () {
                         // chtxt = arrayList[alb].substring(
@@ -270,8 +273,10 @@ echo "<script>
                     lista.appendChild(item);
                 }
             }
-        }        
-        /*-------------------------------------------------------------------------*/         
+        } 
+        
+        /*-------------------------------------------------------------------------*/ 
+       
         else {
             //for (let alb in arrayList) {
                     var item = document.createElement('li')
@@ -308,7 +313,7 @@ echo "<script>
                     }
                     newtxt = temptxt.join(" ")
                     
-                    //console.log(newtxt);
+                    console.log(newtxt);
 
                     item.textContent = newtxt
                     item.addEventListener("click", function () {
@@ -334,7 +339,7 @@ echo "<script>
          //   }
         
         }
-        //console.log(arrayList)
+        console.log(arrayList)
     }
       //      else {
         //alert('None main directory found')
