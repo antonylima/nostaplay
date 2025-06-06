@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/normalize.css" type="text/css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/png">
 </head>
+
 <body>
     <dialog id="ch"></dialog>
     <div id="master">
@@ -48,10 +49,14 @@
     <div id="res">
     </div>
     </div>
+    
+    
     <script src="assets/script.js">
     </script>
 </body>
+
 </html>
+
 
 <?php
 $srcs = array("SERTANEJO/","");
@@ -240,6 +245,7 @@ echo "<script>
                         }
                     
                     console.log(newtxt);
+
                     item.textContent = newtxt
                     item.addEventListener("click", function () {
                         // chtxt = arrayList[alb].substring(
@@ -275,7 +281,8 @@ echo "<script>
         } 
         
         /*-------------------------------------------------------------------------*/ 
-       
+        
+        
         else {
             //for (let alb in arrayList) {
                     var item = document.createElement('li')
@@ -307,7 +314,8 @@ echo "<script>
                                 temptxt.push(texto[w][0].toUpperCase() + texto[w].substring(1).toLowerCase());
                             }
                             else {
-                               temptxt.push(texto[w].toLowerCase());                                
+                               temptxt.push(texto[w].toLowerCase());
+                                
                       }
                     }
                     newtxt = temptxt.join(" ")
@@ -339,11 +347,14 @@ echo "<script>
         
         }
         console.log(arrayList)
+
     }
       //      else {
         //alert('None main directory found')
     //}
+
         }
+
     function play() {
         if (busca == true && albumTracks[0]) {
             start = true;
