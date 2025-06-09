@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="assets/normalize.css" type="text/css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/png">
 </head>
-
 <body>
     <dialog id="ch"></dialog>
     <div id="master">
@@ -49,14 +48,9 @@
     <div id="res">
     </div>
     </div>
-    
-    
-    <script src="assets/script.js">
-    </script>
+    <script src="assets/script.js"></script>
 </body>
-
 </html>
-
 
 <?php
 $srcs = array("SERTANEJO/","");
@@ -281,8 +275,6 @@ echo "<script>
         } 
         
         /*-------------------------------------------------------------------------*/ 
-        
-        
         else {
             //for (let alb in arrayList) {
                     var item = document.createElement('li')
