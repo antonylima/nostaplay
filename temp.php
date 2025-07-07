@@ -1,69 +1,6 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-    <title>Nostaplay</title>
-    <link rel="icon" type="image/x-icon" href="assets/play.png">
-    <link rel="stylesheet" href="assets/style.css" type="text/css">
-    <link rel="stylesheet" href="assets/normalize.css" type="text/css">
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/png">
-</head>
-
-<body>
-    <dialog id="ch"></dialog>
-    <div id="master">
-    <div id="deepmain">
-        <div id="main">
-            <div id="header">
-                <img class="imghd" id="img1" src="assets/vinil.png" alt="vinil">
-                <img id="title" src="assets/title.png" alt="title">
-                <img class="imghd" id="img2" src="assets/vinil.png" alt="vinil">
-            </div>
-            <div id="player">
-                <audio controls src="" id="song"></audio>
-            </div>
-            <div id="info">
-                <marquee id="mq" direction="left">
-                    <div id="painel">Hello</div>
-                </marquee>
-            </div>
-            <div id="ctrl">
-                <div id="ctrl1" class="ctrl"> 
-                   <img onclick="play()" src="assets/play.png" alt="play">
-                   <img onclick="pause()" src="assets/pause.png" alt="pause">
-                   <img onclick="stop()" src="assets/stop.png" alt="stop">
-                </div>
-                <div id="ctrl2" class="ctrl">
-                    <img onclick="previous()" src="assets/previous.png" alt="previous">
-                    <img id="repeat" onclick="repeat()" src="assets/rptoff.png" alt="repeat">
-                    <img onclick="next()" src="assets/next.png" alt="next">
-                </div>
-            </div>
-        </div>
-        <div id="pesq">
-            <input id="termo" class="pesq" type="text" value="" placeholder="Digite um gênero ou artista">
-            <img class="pesq" onclick="search()" src="assets/lens.png" alt="search">
-        </div>
-    </div>
-    <div id="res">
-    </div>
-    </div>
-    
-    
-    <script src="assets/script.js">
-    </script>
-</body>
-
-</html>
-
-
 <?php
-$srcs = array("SONGS/","voz");
-foreach( $srcs as $src) {
-    if (dir($src)) {
-        scanner($src);
-    }
+if (dir('SONGS/')) {
+    scanner('SONGS/');
 }
 function scanner($folder)
 {
@@ -128,6 +65,62 @@ echo "<script>
 </script>";
 ?>
 
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VanPlayer</title>
+    <link rel="icon" type="image/x-icon" href="assets/play.png">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/png">
+</head>
+
+<body>
+    <dialog id="ch"></dialog>
+    <div id="deepmain">
+        <div id="main">
+            <div id="header">
+                <img class="imghd" id="img1" src="assets/vinilblack.png" alt="vinil">
+                <img id="title" src="assets/title.png" alt="title">
+                <img class="imghd" id="img2" src="assets/vinilblack.png" alt="vinil">
+            </div>
+            <div id="player">
+                <audio controls src="" id="song"></audio>
+            </div>
+            <div id="info">
+                <marquee id="mq" direction="left">
+                    <div id="painel">Hello</div>
+                </marquee>
+                <!-- <div class="fastpanel" id="painel">Hello</div> -->
+            </div>
+            <div id="ctrl">
+                <div id="ctrl1" class="ctrl">
+                    <img onclick="play()" src="assets/play.png" alt="play">
+                    <img onclick="pause()" src="assets/pause.png" alt="pause">
+                    <img onclick="stop()" src="assets/stop.png" alt="stop">
+                </div>
+                <div id="ctrl2" class="ctrl">
+                    <img onclick="previous()" src="assets/previous.png" alt="previous">
+                    <img id="repeat" onclick="repeat()" src="assets/rptoff.png" alt="repeat">
+                    <img onclick="next()" src="assets/next.png" alt="next">
+                </div>
+            </div>
+        </div>
+        <div id="pesq">
+            <input id="termo" class="pesq" type="text" value=" " placeholder="">
+            <button class="pesq" onclick="search()">Search</button>
+        </div>
+    </div>
+    <div id="res">
+    </div>
+    <script src="assets/script.js">
+    </script>
+</body>
+
+</html>
+
 <script>
     let albumDir = "";
     let albumTracks = "";
@@ -167,13 +160,15 @@ echo "<script>
         if (termo.value != "" && termo.value != null && jsondb) {
             busca = true;
             result.innerHTML = ""
+            //result.style.display = "block";
             console.clear();
             var arrayList = [];
             //var unique = ""
             var lista = document.createElement('ul')
             result.appendChild(lista)
             testador = false
-            console.log('Termo pesquisado: ' + termo.value);
+            //console.log('Termo pesquisado: ' + termo.value);
+            //rg = /termo.value/i;
             chave1 = termo.value.toUpperCase();
             chave2 = termo.value.toLowerCase();
             chave3 = termo.value;
@@ -182,14 +177,14 @@ echo "<script>
                 if (i.includes(`${chave1}`) || i.includes(`${chave2}`) || i.includes(`${chave3}`) || i.includes(`${chave4}`)) {
                     testador = true
                     termo.value = null;
-                    console.log("Resutados:")
+                    //console.log("Resutados:")
                     arrayList.push(i);
                 }
             }
             if (testador === false) {
-                console.log("Nothing found")
+                //console.log("Nothing found")
             }
-            console.log(arrayList.length);
+            //console.log(arrayList.length);
             arrayList.sort();
             if (arrayList.length > 1) {
                 for (let alb in arrayList) {
@@ -201,50 +196,34 @@ echo "<script>
                                 0,arrayList[alb].length - 1)
                                 .lastIndexOf('/') + 1
                         )
-                    
-                        texto = texto.toUpperCase().split(' ');
-                        //console.log(texto)
+                        if(texto.length > 35){
+                            texto = texto.substring(0,34) + '...';
+                        }
+                        texto = texto.split(' ');
                     if (jsondb[arrayList[alb]]) {
-
-                        //tratar(texto)
                         var temptxt = [];
                         var newtxt = "";
                         for (let w in texto) {
-                            if ((texto[w].length > 2 ||
-                                texto[w] === texto[0] ||
-                                texto[w-1] === "-") 
-                                //&& texto[w][0] !== '-'
+                            if (texto[w].length > 2 ||
+                                texto[w] === "Zé" ||
+                                texto[w] === "zé" ||
+                                texto[w] === "Di" ||
+                                texto[w] === "di" ||
+                                texto[w] === "pe" ||
+                                texto[w] === "Pe" ||
+                                texto[w] === texto[0]
                             ) {
-                                    //temptxt.push(texto[w][0].replace(/^./,texto[w][0].toUpperCase()+texto[w].substring(1)))
-                                temptxt.push(texto[w][0] + texto[w].substring(1).toLowerCase());
-    
-                                }else{
-
-                                    if (texto[w] === '-') {
-                                        temptxt.push("-")
-
-                                    }else{
-                                        if(texto[w][0] === '-'){
-                                           //console.log("- " + texto[w][1] + texto[w].substring(2))
-                                           
-                                            temptxt.push("- " + texto[w][1] + texto[w].substring(2))//.toLowerCase())//&& texto[w].length
-
-                                        }else{
-                                            temptxt.push(texto[w].toLowerCase())
-
-                                        }
-                                        
-                                    }
-
-                                } // else do > 2
-                     
+                                //temptxt.push(texto[w][0].replace(/^./,texto[w][0].toUpperCase()+texto[w].substring(1)))
+                                temptxt.push(texto[w][0].toUpperCase() + texto[w].substring(1).toLowerCase());
+                            }
+                            else {
+                               temptxt.push(texto[w].toLowerCase());
+                                
+                      }
                     }
                     newtxt = temptxt.join(" ")
-                    if(newtxt.length > 30){
-                            newtxt = newtxt.substring(0,29) + '...';
-                        }
                     
-                    console.log(newtxt);
+                    //console.log(newtxt);
 
                     item.textContent = newtxt
                     item.addEventListener("click", function () {
@@ -270,7 +249,7 @@ echo "<script>
                             }
                         }
                         pasta = albumDir.substring(0, albumDir.length - 1);
-
+                        //display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
                         display = newtxt + ' - ' + faixa.substring(0, faixa.length - 4)
                         fonte = pasta + '/' + faixa;
                         play();
@@ -320,7 +299,7 @@ echo "<script>
                     }
                     newtxt = temptxt.join(" ")
                     
-                    console.log(newtxt);
+                    //console.log(newtxt);
 
                     item.textContent = newtxt
                     item.addEventListener("click", function () {
@@ -337,6 +316,7 @@ echo "<script>
                             }
                         }
                         pasta = albumDir.substring(0, albumDir.length - 1);
+                        //display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
                         display = newtxt + ' - ' + faixa.substring(0, faixa.length - 4)
                         fonte = pasta + '/' + faixa;
                         play();
@@ -346,7 +326,34 @@ echo "<script>
          //   }
         
         }
-        console.log(arrayList)
+        //console.log(arrayList)
+        let contador = 0
+        for(let p in jsondb){
+           // if(){
+                
+            //}
+            
+            for(let m in jsondb[p]){
+                /*var testex = jsondb[p][m].split(" ");
+                for(let x in testex ){
+                    if(testex[x].length > 1 && testex[x].includes("-")){
+                        console.log(p)
+                    console.log(testex[x])//.split(" "))
+                        //console.log(jsondb[p][m])
+                    }
+
+                }*/
+                //if(jsondb[p][m].split(" ").includes("-") && jsondb[p][m][0]=== "-"){
+                if(jsondb[p][m].includes("_")){
+                    console.log(p)
+                    console.log(jsondb[p][m])
+                    contador += 1 
+                }    
+
+                }
+
+            }
+            console.log(contador)
 
     }
       //      else {
@@ -484,44 +491,6 @@ echo "<script>
         // Remove o elemento
         el.parentElement.removeChild(el)
     }
-
-
-    function tratar(text){
-        var temptxt = [];
-                        var newtxt = "";
-                        for (let w in text) {
-                            if ((text[w].length > 2 ||
-                                text[w] === text[0] ||
-                                text[w-1] === "-") 
-                                //&& text[w][0] !== '-'
-                            ) {
-                                    //temptxt.push(text[w][0].replace(/^./,text[w][0].toUpperCase()+text[w].substring(1)))
-                                temptxt.push(text[w][0] + text[w].substring(1).toLowerCase());
-    
-                                }else{
-
-                                    if (text[w] === '-') {
-                                        temptxt.push("-")
-
-                                    }else{
-                                        if(text[w][0] === '-'){
-                                           //console.log("- " + text[w][1] + text[w].substring(2))
-                                           
-                                            temptxt.push("- " + text[w][1] + text[w].substring(2))//.toLowerCase())//&& text[w].length
-
-                                        }else{
-                                            temptxt.push(text[w].toLowerCase())
-
-                                        }
-                                        
-                                    }
-
-                                } // else do > 2
-                     
-                    }
-                    newtxt = temptxt.join(" ");
-                    return newtxt;
-                }
 
 
     //console.log(albumTracks.sort((a,b)=>b.localeCompare(a)))
