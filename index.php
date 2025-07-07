@@ -2,13 +2,14 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <title>Nostaplay</title>
     <link rel="icon" type="image/x-icon" href="assets/play.png">
     <link rel="stylesheet" href="assets/style.css" type="text/css">
     <link rel="stylesheet" href="assets/normalize.css" type="text/css">
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/png">
 </head>
+
 <body>
     <dialog id="ch"></dialog>
     <div id="master">
@@ -48,12 +49,17 @@
     <div id="res">
     </div>
     </div>
-    <script src="assets/script.js"></script>
+    
+    
+    <script src="assets/script.js">
+    </script>
 </body>
+
 </html>
 
+
 <?php
-$srcs = array("SERTANEJO/","");
+$srcs = array("SONGS/","voz");
 foreach( $srcs as $src) {
     if (dir($src)) {
         scanner($src);
@@ -275,6 +281,8 @@ echo "<script>
         } 
         
         /*-------------------------------------------------------------------------*/ 
+        
+        
         else {
             //for (let alb in arrayList) {
                     var item = document.createElement('li')
