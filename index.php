@@ -59,7 +59,7 @@
 
 
 <?php
-$srcs = array("SONGS/","SERTANEJO/","voz/");
+$srcs = array("SONGS/","SERTANEJO/");
 foreach( $srcs as $src) {
     if (dir($src)) {
         scanner($src);
