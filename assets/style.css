@@ -273,8 +273,8 @@ li:active {
   width: fit-content;
   height: fit-content;
   position: fixed;
-  bottom: 5%;
-  right: 5%;
+  bottom: 5vh;
+  right: 5vw;
   color: greenyellow;
   text-decoration: none;
 }
