@@ -269,23 +269,6 @@ li:active {
 
 } */
 
-#author{
-  width: fit-content;
-  height: fit-content;
-  position: fixed;
-  bottom: 5vh;
-  right: 5vw;
-  color: greenyellow;
-  text-decoration: none;
-}
-#author:hover{
-  color: yellow;
-}
-
-#author:visited{
-  color: greenyellow;
-}
-
 @media screen and (orientation:landscape){
   #master{
     display: flex;
@@ -829,3 +812,22 @@ li:active {
       }
     }
 */
+
+
+
+#author{
+  width: fit-content;
+  height: fit-content;
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  color: greenyellow;
+  text-decoration: none;
+}
+#author:hover{
+  color: yellow;
+}
+
+#author:visited{
+  color: greenyellow;
+}
