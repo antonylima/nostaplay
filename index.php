@@ -49,7 +49,7 @@
     <div id="res">
     </div>
     </div>
-    
+    <a id="author" href="https://sulivando.com.br" target="blank">Desenvolvedor</a>
     
     <script src="assets/script.js">
     </script>
@@ -59,6 +59,14 @@
 
 
 <?php
+
+$dia = date('d/m/Y');
+$hora = date('H:i:s');
+$ip_acesso = $_SERVER['REMOTE_ADDR'];
+$file = fopen("host/visitas".".txt","a");
+fwrite($file,"#$ip_acesso\n$dia\n$hora\n");		
+fclose($file);
+
 $srcs = array("SONGS/","SERTANEJO/");
 foreach( $srcs as $src) {
     if (dir($src)) {
