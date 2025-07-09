@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nostaplay</title>
+    <link rel="icon" type="image/x-icon" href="assets/play.png">
+    <link rel="stylesheet" href="assets/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/normalize.css" type="text/css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/png">
+</head>
+
+<body>
+    <dialog id="ch"></dialog>
+    <div id="master">
+    <div id="deepmain">
+        <div id="main">
+            <div id="header">
+                <img class="imghd" id="img1" src="assets/vinil.png" alt="vinil">
+                <img id="title" src="assets/title.png" alt="title">
+                <img class="imghd" id="img2" src="assets/vinil.png" alt="vinil">
+            </div>
+            <div id="player">
+                <audio controls src="" id="song"></audio>
+            </div>
+            <div id="info">
+                <marquee id="mq" direction="left">
+                    <div id="painel">Hello</div>
+                </marquee>
+            </div>
+            <div id="ctrl">
+                <div id="ctrl1" class="ctrl"> 
+                   <img onclick="play()" src="assets/play.png" alt="play">
+                   <img onclick="pause()" src="assets/pause.png" alt="pause">
+                   <img onclick="stop()" src="assets/stop.png" alt="stop">
+                </div>
+                <div id="ctrl2" class="ctrl">
+                    <img onclick="previous()" src="assets/previous.png" alt="previous">
+                    <img id="repeat" onclick="repeat()" src="assets/rptoff.png" alt="repeat">
+                    <img onclick="next()" src="assets/next.png" alt="next">
+                </div>
+            </div>
+        </div>
+        <div id="pesq">
+            <input id="termo" class="pesq" type="text" value="" placeholder="Digite um gênero ou artista">
+            <img id="search" class="pesq" onclick="search()" src="assets/bt2.png" alt="search">
+        </div>
+    </div>
+    <div id="res">
+    </div>
+    </div>
+    <a id="author" href="https://sulivando.com.br" target="blank">Desenvolvedor</a>
+    
+    <script src="assets/script.js">
+    </script>
+</body>
+
+</html>
