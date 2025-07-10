@@ -1,4 +1,5 @@
-    fetch('http://localhost:8000/nostaplay/')
+const url = "http://localhost:8000/nostaplay/";
+fetch(url)
         .then(response => response.text())
         .then(data => {
             //console.log(data);
@@ -12,10 +13,9 @@
     let termo = document.querySelector('#termo')
     termo.value = ""
     let faixa = "";
-    let pasta = "http://localhost:8000/nostaplay/";
+    let pasta = url+"/";
     let display = "";
     let fonte = "";
-    let url = "http://localhost:8000/nostaplay/";
     let song = document.querySelector('#song')
     //let player = document.querySelector('#player')
     //let info = document.querySelector('#info')
@@ -137,17 +137,8 @@
 
                     item.textContent = newtxt
                     item.addEventListener("click", function () {
-                        // chtxt = arrayList[alb].substring(
-                        //     0, arrayList[alb].length - 1).substring(
-                        //         arrayList[alb].substring(
-                        //             0, arrayList[alb].length - 1)
-                        //             .lastIndexOf('/') + 1)
-                        // choice.innerHTML = chtxt 
-                        // choice.show()  
-                        // setInterval(() => document.querySelector('#ch').close()
-                        //      , 2000)
                         inc = 0
-                        albumDir = arrayList[alb]
+                        albumDir = url + arrayList[alb]
                         albumTracks = jsondb[arrayList[alb]].sort()//(a,b)=>a.localeCompare(b));
                         if (albumTracks[0].substring(albumTracks[0].length - 3) != 'jpg') {
                             faixa = albumTracks[0];
@@ -158,7 +149,7 @@
                                 teste++;
                             }
                         }
-                        pasta += albumDir.substring(0, albumDir.length - 1);
+                        pasta = albumDir.substring(0, albumDir.length - 1);
 
                         display = newtxt + ' - ' + faixa.substring(0, faixa.length - 4)
                         fonte = pasta + '/' + faixa;
