@@ -1,4 +1,4 @@
-const url = "http://localhost:8000/nostaplay/";
+const url = "https://hyena-rich-slightly.ngrok-free.app/";
 fetch(url)
         .then(response => response.text())
         .then(data => {
@@ -13,7 +13,7 @@ fetch(url)
     let termo = document.querySelector('#termo')
     termo.value = ""
     let faixa = "";
-    let pasta = url+"/";
+    let pasta = url;
     let display = "";
     let fonte = "";
     let song = document.querySelector('#song')
