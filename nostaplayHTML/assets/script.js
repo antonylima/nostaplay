@@ -310,7 +310,7 @@ fetch(url)
             panel.innerHTML = "Bye bye";
             song.src = fonte
             faixa = albumTracks[0];
-            pasta += albumDir.substring(0, albumDir.length - 1);
+            pasta = albumDir.substring(0, albumDir.length - 1);
             inc = 0
             start = false
             pausa = false
