@@ -6,7 +6,7 @@
 }
 @font-face {
   font-family: uc;
-  src: url("BebasNeue-Regular.ttf");
+  src: url("../font/BebasNeue-Regular.ttf");
 }
 @keyframes vinil {
   0% {
@@ -86,7 +86,7 @@ body {
   z-index: 1;
   top: 0;
   /* background-image: linear-gradient(gray, white, gray); */
-  background-image: url("aço3.jpg");
+  background-image: url("../img/aço3.jpg");
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -181,42 +181,30 @@ marquee {
 
 
 #pesq {
-  text-align: center;
   border-top: solid red 1px;
-  padding: 5px;
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.pesq {
-  margin-top: 5%;
-  outline: orangered 1px;
-  font-size: 0.7em;
-  padding: 5px;
+  padding-top: 1%;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 #termo{
   width: 60%;
   border-radius: 15px;
   outline: 1px solid blue;
+  padding: 0.5%;
+  font-size: 0.7em;
 }
+
 
 #termo:focus{
   outline-color: green;
 }
 
-button{
+#search {
   width: 10%;
-  margin-left: 3%;
-  text-align: center;
-  cursor: pointer;
-  padding: 0;
-}
-
-#pesq img{
-  width: 8%;
- 
   cursor: pointer;
 }
 
@@ -303,12 +291,25 @@ li:active {
   }
 }
 
-@media screen and (orientation:landscape) and (min-width:1300px){
+@media screen and (orientation:landscape) and (min-width:1024px){
   #res {
     width: 30%;
     position: relative;
   }
+
+   #termo{
+    font-size: 1em;
+  }
+
 }
+
+
+
+
+
+
+
+
 
 /* @media screen and (orientation:landscape) and (min-width:720px) and (max-width:920px) {
 
@@ -516,6 +517,11 @@ li:active {
     display: none;
   }
 
+   #termo{
+    font-size: 1.8em;
+    border-radius: 25px;
+  }
+
 }
 @media screen and (min-width:730px) and (orientation:portrait) {
   ul {
@@ -614,6 +620,10 @@ li:active {
   }
   ::-webkit-scrollbar {
     display: none;
+  }
+
+     #termo{
+    font-size: 2em;
   }
 
 }
@@ -819,7 +829,7 @@ li:active {
   width: fit-content;
   height: fit-content;
   position: fixed;
-  bottom: 5vh;
+  bottom: 2vh;
   right: 5vw;
   color: greenyellow;
   text-decoration: none;
