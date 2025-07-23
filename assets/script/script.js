@@ -117,7 +117,7 @@ function search() {
                     display = newtxt + ' - ' + faixa.substring(0, faixa.length - 4)
                     fonte = pasta + '/' + faixa;
                     //console.log("fonte: ", fonte);
-                    play();
+                    startPlay();
                 })
                 lista.appendChild(item);
             }
@@ -130,19 +130,16 @@ document.addEventListener('orientationchange',()=>{
                 screen.orientation.type === "landscape-secondary"){
                 lista.style.height = htr + "px";}})*/
 
-function play() {
-    if (busca == true && albumTracks[0]) {
-        start = true;
+function startPlay() {
+        if (busca == true && albumTracks[0]) {
         song.src = fonte
-        //display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
-        //panel.innerHTML = display;
-	song.play();
+        start = true;
+        display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
+        panel.innerHTML = display;
+	    song.play();
         autonext();
     }
-	if(start == true){
-	
-}
-}
+      }
 function autonext() {
     setInterval(function () {
         if (song.currentTime == tempo) {
@@ -186,19 +183,24 @@ function repeat() {
     }
 }
 
-function pause() {
-    if (!pausa) {
+function startPause() {
+    if(start == true){
+        if (!pausa) {
+        pp.src = "assets/img/play.png";
         song.pause();
         pausa = true;
     }
-    else {
+        else {
+        pp.src = "assets/img/pause.png";
         song.play();
         pausa = false
+    }
     }
 }
 function stop() {
     if (start) {
         song.pause()
+        pp.src = "assets/img/pause.png";
         song.currentTime = 0
         panel.innerHTML = "Bye bye";
         song.src = fonte
