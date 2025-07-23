@@ -134,8 +134,9 @@ function play() {
     if (busca == true && albumTracks[0]) {
         start = true;
         song.src = fonte
-        panel.innerHTML = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
-        song.play();
+        display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
+        panel.innerHTML = display;
+	song.play();
         autonext();
     }
 	if(start == true){
