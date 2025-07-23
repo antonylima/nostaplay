@@ -1,3 +1,9 @@
+const dmh = deepmain.offsetHeight;
+const fth = footer.offsetHeight;
+const bdh = window.screen.height;
+const gth = bdh - fth - dmh;
+const rmp = dmh + 5;
+//footer.style.height = fth + "px";
 const url = "https://nostaplay.com/api.php";
 //const url = "http://localhost:8000/api.php";
 fetch(url)
@@ -54,6 +60,14 @@ function search() {
         var arrayList = [];
         //var unique = ""
         var lista = document.createElement('ul')
+        if(screen.orientation.type === "portrait-primary" || screen.orientation.type === "portrait-secondary"){
+            //lista.style.height = dmh + "px";
+            res.style.marginTop = rmp + "px";
+        }
+        //if(screen.orientation.type === "landscape-primary" || screen.orientation.type === "landscape-secondary"){
+            //lista.style.height = dmh + "px";
+            //res.style.marginTop = rmp + "px";
+        //}
         result.appendChild(lista)
         testador = false
         console.log('Termo pesquisado: ' + termo.value);
@@ -110,6 +124,11 @@ function search() {
         }
     }
 }
+
+document.addEventListener('orientationchange',()=>{
+            if(screen.orientation.type === "landscape-primary" || 
+                screen.orientation.type === "landscape-secondary"){
+                lista.style.height = htr + "px";}})
 
 function play() {
     if (busca == true && albumTracks[0]) {
@@ -265,4 +284,4 @@ function tratar(text) {
 
 //console.log(albumTracks.sort((a,b)=>b.localeCompare(a)))
 //console.log(albumTracks.length)
-//console.log(jsondb[albumDir].lenght)
+//console.log(jsondb[albumDir].lenght) 

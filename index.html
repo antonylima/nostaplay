@@ -13,7 +13,6 @@
     <dialog id="ch"></dialog>
     <div id="master">
     <div id="deepmain">
-        <div id="main">
             <div id="header">
                 <img class="imghd" id="img1" src="assets/img/vinil.png" alt="vinil">
                 <img id="title" src="assets/img/title.png" alt="title">
@@ -27,10 +26,10 @@
                     <div id="painel">Hello</div>
                 </marquee>
             </div>
-            <div id="ctrl">
+            <div id="cs">
+                <div id="ctrl">
                 <div id="ctrl1" class="ctrl"> 
-                   <img onclick="play()" src="assets/img/play.png" alt="play">
-                   <img onclick="pause()" src="assets/img/pause.png" alt="pause">
+                   <img onclick="pause(), play()" src="assets/img/pause.png" alt="pause">
                    <img onclick="stop()" src="assets/img/stop.png" alt="stop">
                 </div>
                 <div id="ctrl2" class="ctrl">
@@ -42,13 +41,18 @@
         </div>
         <div id="pesq">
             <input id="termo" class="pesq" type="text" value="" placeholder="Digite um gênero ou artista">
-            <img id="search" class="pesq" onclick="search()" src="assets/img/bt2.png" alt="search">
+            <button  id="search" class="pesq" onclick="search()">OK</button>
         </div>
+            
     </div>
     <div id="res">
     </div>
     </div>
-    <a id="author" href="https://sulivando.com.br" target="blank">Desenvolvedor</a>
+    <div id="ghost"></div>
+    <div id="footer">
+        <a id="author" href="https://sulivando.com.br" target="blank">Desenvolvedor</a>
+    </div>
+    
     
     <script src="assets/script/script.js">
     </script>
