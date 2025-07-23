@@ -138,6 +138,9 @@ function play() {
         song.play();
         autonext();
     }
+			if(start == true){
+						pause();
+}
 }
 function autonext() {
     setInterval(function () {
