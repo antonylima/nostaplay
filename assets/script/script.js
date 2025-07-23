@@ -138,8 +138,8 @@ function play() {
         song.play();
         autonext();
     }
-			if(start == true){
-						pause();
+	if(start == true){
+	
 }
 }
 function autonext() {
