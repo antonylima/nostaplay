@@ -124,11 +124,11 @@ function search() {
         }
     }
 }
-
+/*
 document.addEventListener('orientationchange',()=>{
             if(screen.orientation.type === "landscape-primary" || 
                 screen.orientation.type === "landscape-secondary"){
-                lista.style.height = htr + "px";}})
+                lista.style.height = htr + "px";}})*/
 
 function play() {
     if (busca == true && albumTracks[0]) {
