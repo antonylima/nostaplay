@@ -133,14 +133,9 @@ document.addEventListener('orientationchange',()=>{
 function play() {
     if (busca == true && albumTracks[0]) {
         start = true;
-        if (pause) {
-            pausa = false;
-        }
         song.src = fonte
-        display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
-        panel.innerHTML = display
+        panel.innerHTML = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
         song.play();
-
         autonext();
     }
 }
