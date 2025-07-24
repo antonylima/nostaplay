@@ -18,8 +18,19 @@ Um player de áudio desenvolvido com tecnologias puras: **PHP**, **HTML**, **CSS
 - `CSS` – Estilização visual com responsividade
 - `JavaScript` – Controle de reprodução, carregamento das faixas e interação com o usuário
 
+## 📸 Screenshots
+
+![](assets/IMG/calc.png)
+
 Feito com café ☕, dedicação e um toque de nostalgia 🎶
 
+## 📧 Contact
+
+Developed by [Sulivando Lima / Antonio Lima]. Feel free to connect\!
+
+  * Sulivando: [https://sulivando.com.br](https://www.google.com/search?q=sulivando.com)
+
+-----
 
 
 
