@@ -1,18 +1,25 @@
 const dmh = deepmain.offsetHeight;
 const fth = footer.offsetHeight;
 const bdh = window.screen.height;
-const gth = bdh - fth - dmh;
-const rmp = dmh + 5;
+const bdh2 = window.screen.availHeight
+const rph = bdh - dmh - fth;
+var rmp = null;
+console.log(rmp)
+document.addEventListener("DOMContentLoaded", () => {
+    if (screen.orientation.type === "portrait-primary" || screen.orientation.type === "portrait-secondary") {
+        //alert(2)
+        rmp = dmh + 10;    
+        res.style.marginTop = rmp + "px";
+    }
+})
+//console.log(bdh, "-", bdh2, window.getComputedStyle(master).display)
 //footer.style.height = fth + "px";
 const url = "https://nostaplay.com/api.php";
 //const url = "http://localhost:8000/api.php";
 fetch(url)
     .then(response => response.json())
-    //.then(response => response.json())
     .then(data => {
-        //console.log(data);
         jsondb = data;
-        //jsondb = data;
     })
     .catch(error => console.error('Erro:', error));
 
@@ -40,9 +47,7 @@ let testador = null
 let albumDirx = ''
 let busca = false
 let rptctrl = false;
-
 //termo.activeElement = true;
-
 termo.addEventListener("focus", function () {
     document.addEventListener("keyup", function (e) {
         if (e.key === "Enter") {
@@ -50,8 +55,6 @@ termo.addEventListener("focus", function () {
         }
     })
 })
-
-
 function search() {
     if (termo.value != "" && termo.value != null && jsondb) {
         busca = true;
@@ -60,14 +63,10 @@ function search() {
         var arrayList = [];
         //var unique = ""
         var lista = document.createElement('ul')
-        if(screen.orientation.type === "portrait-primary" || screen.orientation.type === "portrait-secondary"){
-            //lista.style.height = dmh + "px";
-            res.style.marginTop = rmp + "px";
+        if (screen.orientation.type === "portrait-primary" || screen.orientation.type === "portrait-secondary") {
+            rmp = dmh + 10;
+            result.style.marginTop = rmp + "px";
         }
-        //if(screen.orientation.type === "landscape-primary" || screen.orientation.type === "landscape-secondary"){
-            //lista.style.height = dmh + "px";
-            //res.style.marginTop = rmp + "px";
-        //}
         result.appendChild(lista)
         testador = false
         console.log('Termo pesquisado: ' + termo.value);
@@ -123,23 +122,44 @@ function search() {
             }
         }
     }
+    for(let i = 1;i<11;i++){
+                    lista.appendChild(document.createElement("li"));
+                }
 }
-/*
-document.addEventListener('orientationchange',()=>{
-            if(screen.orientation.type === "landscape-primary" || 
-                screen.orientation.type === "landscape-secondary"){
-                lista.style.height = htr + "px";}})*/
+
+/*document.addEventListener('orientationchange', () => {
+    if (window.screen.orientation.type === "portrait-primary" ||
+        window.screen.orientation.type === "portrait-secondary") {
+        //alert("ops")    
+        //res.style.marginTop = rmp + "px";
+    }
+})*/
+
+window.screen.orientation.onchange = () => {
+    if (window.screen.orientation.type === "portrait-primary" ||
+        window.screen.orientation.type === "portrait-secondary") {
+        //alert("ops")
+        res.style.marginTop = rmp + "px";
+    } else {
+        res.style.marginTop = "1%";
+    }
+}
+
+document.querySelector("#prev").addEventListener('click', previous)
+document.querySelector("#next").addEventListener('click', next)
+
+
 
 function startPlay() {
-        if (busca == true && albumTracks[0]) {
+    if (busca == true && albumTracks[0]) {
         song.src = fonte
         start = true;
         display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
         panel.innerHTML = display;
-	    song.play();
+        song.play();
         autonext();
     }
-      }
+}
 function autonext() {
     setInterval(function () {
         if (song.currentTime == tempo) {
@@ -184,17 +204,17 @@ function repeat() {
 }
 
 function startPause() {
-    if(start == true){
+    if (start == true) {
         if (!pausa) {
-        pp.src = "assets/img/play.png";
-        song.pause();
-        pausa = true;
-    }
+            pp.src = "assets/img/play.png";
+            song.pause();
+            pausa = true;
+        }
         else {
-        pp.src = "assets/img/pause.png";
-        song.play();
-        pausa = false
-    }
+            pp.src = "assets/img/pause.png";
+            song.play();
+            pausa = false
+        }
     }
 }
 function stop() {
@@ -247,42 +267,37 @@ function previous() {
 }
 
 function tratar(text) {
-                  var temptxt = [];
-                var newtxt = "";
-                for (let w in text) {
-                    if ((text[w].length > 2 ||
-                        text[w] === text[0] ||
-                        text[w - 1] === "-")
-                    ) {
-                        temptxt.push(text[w][0] + text[w].substring(1).toLowerCase());
+    var temptxt = [];
+    var newtxt = "";
+    for (let w in text) {
+        if ((text[w].length > 2 ||
+            text[w] === text[0] ||
+            text[w - 1] === "-")
+        ) {
+            temptxt.push(text[w][0] + text[w].substring(1).toLowerCase());
 
-                    } else {
+        } else {
 
-                        if (text[w] === '-') {
-                            temptxt.push("-")
+            if (text[w] === '-') {
+                temptxt.push("-")
 
-                        } else {
-                            if (text[w][0] === '-') {
-                                temptxt.push("- " + text[w][1] + text[w].substring(2))//.toLowerCase())//&& texto[w].length
+            } else {
+                if (text[w][0] === '-') {
+                    temptxt.push("- " + text[w][1] + text[w].substring(2))//.toLowerCase())//&& texto[w].length
 
-                            } else {
-                                temptxt.push(text[w].toLowerCase())
-
-                            }
-
-                        }
-
-                    }
+                } else {
+                    temptxt.push(text[w].toLowerCase())
 
                 }
-                newtxt = temptxt.join(" ")
-                if (newtxt.length > 30) {
-                    newtxt = newtxt.substring(0, 29) + '...';
-                }
-                return newtxt;
+
+            }
+
+        }
+
+    }
+    newtxt = temptxt.join(" ")
+    if (newtxt.length > 30) {
+        newtxt = newtxt.substring(0, 29) + '...';
+    }
+    return newtxt;
 }
-
-
-//console.log(albumTracks.sort((a,b)=>b.localeCompare(a)))
-//console.log(albumTracks.length)
-//console.log(jsondb[albumDir].lenght) 

@@ -1,15 +1,15 @@
-*{
+* {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-
 @font-face {
   font-family: uc;
   src: url("../font/BebasNeue-Regular.ttf");
 }
+
 @keyframes vinil {
   0% {
     transform: rotate(0deg);
@@ -78,13 +78,15 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
 ::-moz-webkit-scrollbar {
   display: none;
 }
 
-#master{
+#master {
   height: 90vh;
   margin-top: 0;
+
 }
 
 #deepmain {
@@ -98,7 +100,7 @@ body {
   display: flex;
   flex-direction: column;
   left: 0%;
-  height:fit-content;
+  height: auto;
   width: 96%;
 }
 
@@ -129,6 +131,7 @@ body {
   animation-name: vinil;
   animation: vinil 20s linear 0s infinite none;
 }
+
 .fastpanel {
   display: none;
 }
@@ -139,19 +142,19 @@ body {
   color: greenyellow;
   width: 99%;
   margin-top: 3%;
-  height: fit-content;
+  height: auto;
 }
 
 marquee {
   padding-top: 2%;
   width: 100%;
-  font-size: 1.5em;
+  font-size: auto;
   text-transform: uppercase;
-  font-family:uc, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: uc, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
-#cs{
+#cs {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -167,7 +170,7 @@ marquee {
   width: 100%;
 }
 
-.ctrl{
+.ctrl {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -175,12 +178,15 @@ marquee {
   align-items: center;
   padding: 2%;
 }
+
 #ctrl img {
-  width: 7%;
+  width: 10%;
+  height: auto;
 }
 
 
-#ctrl img:active,#search:active {
+#ctrl img:active,
+#search:active {
   transform: scale(1.3, 1.3);
 
 }
@@ -201,51 +207,46 @@ marquee {
   align-items: center;
 }
 
-#termo{
-  height: fit-content;
+#termo {
+  height: auto;
   width: 60%;
   outline: 1px solid blue;
-  font-size: 0.7em;
+  font-size: auto;
 }
 
-#termo:focus{
+#termo:focus {
   outline-color: green;
 }
 
 #search {
-  height: fit-content;
+  height: auto;
   width: fit-content;
   cursor: pointer;
   margin-left: 2%;
   line-height: 100%;
   background-color: blue;
-  border: 2px red solid;
-  font-size: 0.6em;
+  border: 1px red solid;
+  font-size: auto;
   padding: 0.5%;
   color: aliceblue;
 }
 
 
 #res {
-  /* margin-top: 63vh; */
   z-index: 0;
   width: 70%;
   margin-left: 2%;
-  height: 60%;
-}
-
-ul {
-  width: fit-content;
+  height: auto;
 }
 
 li {
   width: fit-content;
   color: aliceblue;
   list-style-type: none;
-  padding: 2px 0 2px 0;
+  padding: 1% 0 1% 0;
   text-wrap: nowrap;
   height: fit-content;
-  margin-bottom: 5px;
+  margin-bottom: 1%;
 }
 
 li:hover {
@@ -273,51 +274,52 @@ li:active {
 
 } */
 
-#ghost{
+#ghost {
   width: 100%;
   background-color: brown;
-  position:relative;
+  position: relative;
   bottom: 0vh;
   left: 0;
   display: none;
 }
 
-#footer{
-  border: 2px red solid;
+#footer {
   width: 100%;
   position: fixed;
-  background-color: azure;
+  background-color: lightgray;
   z-index: 2;
   left: 0%;
   bottom: 0%;
-  height: 10vh;
+  height: 10vh
 }
 
 
-@media screen and (min-width:380px){
-  #ctrl img{
-    height: 55%;
-  }
-  #search{
+@media screen and (min-width:380px) {
+  #ctrl img {}
+
+  #search {
     font-size: 0.8em;
   }
 }
 
-@media screen and (min-width:600px){
-  #ctrl img{
-    height: 70%;
-    width: 7%;
-  }
+@media screen and (min-width:600px) {
+  #ctrl img {}
 
   #termo{
     font-size: 1em;
   }
 
+   li{
+    font-size: 1.3em;
+  }
+
+
 }
 
-@media screen and (orientation:landscape){
-  #master{
+@media screen and (orientation:landscape) {
+  #master {
     display: flex;
+    flex-direction: column;
     justify-content: start;
     width: 80%;
   }
@@ -327,9 +329,10 @@ li:active {
     left: 0%;
     height: 80%;
   }
-   #ctrl img{
-    height: 50%;
-    width: 15%;
+
+  #ctrl img {
+    /*
+    width: 15%; */
   }
 
   #res {
@@ -339,53 +342,72 @@ li:active {
   }
 }
 
-@media screen and (orientation:landscape) and (max-width:320px){
-    #ctrl img{
-    height: 50%;
-    width: 14%;
+@media screen and (orientation:landscape) and (max-width:390px) {
+  #ctrl img {
+    width: 16%;
+  }
+  
+  #pesq{
+    border: none;
+    justify-content: space-between;
+  }
+  #termo{
+    width: 80%;
+    padding: 0%;
+    font-size: 0.7em;
+  }
+
+  #search{
+    font-size: 0.7em;
+    border: none;
   }
 }
 
-@media screen and (orientation:landscape) and (min-width:321px){
-    #ctrl img{
-    height: 50%;
-    width: 10%;
+@media screen and (orientation:landscape) and (max-width:600px) {
+  #pesq{
+    border: none;
+    justify-content: space-between;
+  }
+  #termo{
+    width: 80%;
+    padding: 0%;
+  }
+
+  #search{
+    font-size: 0.8em;
+  }
+
+}
+
+@media screen and (orientation:landscape) and (min-width:741px) {
+  #ctrl img {
+    /* 
+    width: 10%; */
   }
 }
 
-@media screen and (orientation:landscape) and (min-width:741px){
-    #ctrl img{
-    height: 90%;
-    width: 10%;
+@media screen and (orientation:landscape) and (min-width:890px) {
+  #ctrl img {
+    /*
+    width: 10%; */
   }
 }
 
-@media screen and (orientation:landscape) and (min-width:890px){
-    #ctrl img{
-    height: 50%;
-    width: 10%;
+@media screen and (orientation:landscape) and (min-width:891px) {
+  #ctrl img {
+    width: 13%;
   }
 }
 
-@media screen and (orientation:landscape) and (min-width:891px){
-    #ctrl img{
-    height: 80%;
-    width: 12%;
+@media screen and (orientation:landscape) and (min-width:1080px) {
+  #ctrl img {}
+}
+
+@media screen and (orientation:landscape) and (min-width:1136px) and (max-width:1263px) {
+  #ctrl img {
   }
 }
 
-@media screen and (orientation:landscape) and (min-width:1080px){
-    #ctrl img{
-    width: 15%;
-  }
-}
-
-@media screen and (orientation:landscape) and (min-width:1136px) and (max-width:1263px){
-   #ctrl img{
-    height: 60%;
-    width: 15%;
-  }
-}
 /* 
 @media screen and (orientation:landscape) and (min-width:1366px){
    #ctrl img{
@@ -394,20 +416,21 @@ li:active {
   }
 } */
 
-#author{
+#author {
   width: fit-content;
   height: fit-content;
   position: fixed;
   bottom: 2vh;
   right: 5vw;
-  color: greenyellow;
+  color: darkgreen;
   text-decoration: none;
   z-index: 3;
 }
-#author:hover{
+
+#author:hover {
   color: yellow;
 }
 
-#author:visited{
-  color: greenyellow;
+#author:visited {
+  color: darkgreen;
 }
