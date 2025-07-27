@@ -168,6 +168,7 @@ marquee {
   align-items: center;
   height: 87%;
   width: 100%;
+  user-select: none;
 }
 
 .ctrl {
@@ -229,6 +230,7 @@ marquee {
   font-size: auto;
   padding: 0.5%;
   color: aliceblue;
+  user-select: none;
 }
 
 
@@ -247,6 +249,7 @@ li {
   text-wrap: nowrap;
   height: fit-content;
   margin-bottom: 1%;
+  
 }
 
 li:hover {
@@ -433,4 +436,52 @@ li:active {
 
 #author:visited {
   color: darkgreen;
+}
+
+#set{
+  height: 70%;
+  width:auto;
+  transform: translateY(30%);
+}
+
+#opc{
+  display: none;
+  position: fixed;
+  box-sizing: border-box;
+  left: 0;
+  bottom: 0;
+  background-color: aliceblue;
+  color:black;
+  width: fit-content;
+  height: fit-content;
+  padding: 1%;
+  font-size: medium;
+  border-radius: 0 20% 0 0;
+}
+
+#opc li{
+  user-select: none;
+  color:black;
+
+}
+
+#sleepmn:active{
+  color: brown;
+}
+
+#sleepop{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: none;
+  background-color: blue;
+  height: fit-content;
+  width: fit-content;
+  font-size: 2em;
+  color:white;
+  z-index: 4;
+  padding: 2%;
+  border-radius: 20%;
+  box-sizing: border-box;
 }

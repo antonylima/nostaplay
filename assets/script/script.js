@@ -103,7 +103,7 @@ function search() {
                 var newtxt = tratar(texto);
                 item.textContent = newtxt;
                 item.addEventListener("click", function () {
-                    pasta = "";
+                    pasta = "https://nostaplay.com/";
                     inc = 0
                     albumDir = pasta + arrayList[alb];
                     //console.log("album: ",albumDir);
@@ -301,3 +301,58 @@ function tratar(text) {
     }
     return newtxt;
 }
+
+
+set.onclick = ()=>{
+    opc.style.display = "block";
+    setTimeout(()=>{
+        opc.style.display = "none";
+    },5000)
+}
+
+sleepmn.onclick = ()=>{
+    sleepop.style.display = "block";
+}
+
+
+const timers = [
+  'OFF',
+  900000,
+  1800000,
+  3600000,
+  5400000,
+  7200000,
+  9000,
+  10800000,
+];
+//let stts = false;
+let initial = 1;
+var sto = null;
+var hide = null;
+sleepop.onclick = () => {
+    clearTimeout(hide)
+    hide = setTimeout(()=>{
+        sleepop.style.display = "none"
+    },3000)
+  if (initial === timers.length) {
+    initial = 0;
+  }
+  if (timers[initial] !== timers[0]) {
+    sleepop.innerHTML = timers[initial] / 1000 / 60;
+    //stts = true;
+    console.log('true');
+    clearTimeout(sto);
+    sto = setTimeout(() => {
+      stop();
+      console.log('Bye');
+      initial = initial = 0;
+      sleepop.innerHTML = timers[0];
+      initial++;
+    }, timers[initial]);
+  } else {
+    sleepop.innerHTML = timers[initial];
+    //stts = false;
+    console.log('false');
+  }
+  initial++;
+};
