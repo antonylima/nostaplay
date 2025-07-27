@@ -302,6 +302,11 @@ function tratar(text) {
     return newtxt;
 }
 
+var sto0 = null;
+let initial = 1;
+var sto = null;
+var hide = null;
+var clickSleep = false;
 
 set.onclick = ()=>{
     opc.style.display = "block";
@@ -309,9 +314,15 @@ set.onclick = ()=>{
         opc.style.display = "none";
     },5000)
 }
-
 sleepmn.onclick = ()=>{
     sleepop.style.display = "block";
+    clearInterval(sto0)
+    sto0 = setTimeout(()=>{
+        if(clickSleep !== true){
+            sleepop.style.display = "none";
+        }
+    },5000)
+    
 }
 
 
@@ -326,10 +337,8 @@ const timers = [
   10800000,
 ];
 //let stts = false;
-let initial = 1;
-var sto = null;
-var hide = null;
 sleepop.onclick = () => {
+    clickSleep = true;
     clearTimeout(hide)
     hide = setTimeout(()=>{
         sleepop.style.display = "none"
