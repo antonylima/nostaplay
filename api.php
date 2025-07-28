@@ -25,6 +25,11 @@ function scan($folder)
                         $songs = scandir($folder . $i);
                         unset($songs[0]);
                         unset($songs[1]);
+                        foreach($songs as $k => $v){
+                            if(substr($songs[$k],-3) !== "mp3"){
+                                unset($songs[$k]);
+                            }
+                        }
                         $songs = array_values($songs);
                         $GLOBALS["db"][$folder . $i . "/"] = $songs;
                         $GLOBALS["db"][$folder . $i . "/"] = $songs;
