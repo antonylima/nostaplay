@@ -5,9 +5,10 @@ $ip_acesso = $_SERVER['REMOTE_ADDR'];
 $file = fopen("host/visitas".".txt","a");
 fwrite($file,"#$ip_acesso\n$dia\n$hora\n");		
 fclose($file);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
-?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">

@@ -484,4 +484,6 @@ li:active {
   padding: 2%;
   border-radius: 20%;
   box-sizing: border-box;
+  user-select: none;
+  text-align: center;
 }

@@ -307,25 +307,6 @@ let initial = 1;
 var sto = null;
 var hide = null;
 var clickSleep = false;
-
-set.onclick = ()=>{
-    opc.style.display = "block";
-    setTimeout(()=>{
-        opc.style.display = "none";
-    },5000)
-}
-sleepmn.onclick = ()=>{
-    sleepop.style.display = "block";
-    clearInterval(sto0)
-    sto0 = setTimeout(()=>{
-        if(clickSleep !== true){
-            sleepop.style.display = "none";
-        }
-    },5000)
-    
-}
-
-
 const timers = [
   'OFF',
   900000,
@@ -336,13 +317,27 @@ const timers = [
   9000000,
   10800000,
 ];
+
+set.onclick = ()=>{
+    opc.style.display = "block";
+    setTimeout(()=>{
+        opc.style.display = "none";
+    },5000)
+}
+sleepmn.onclick = ()=>{
+    sleepop.style.display = "block";
+    clickSleep = false;
+    clearInterval(sto0)
+    sto0 = setTimeout(()=>{
+        if(clickSleep !== true){
+            sleepop.style.display = "none";
+        }
+    },5000)
+    
+}
 //let stts = false;
 sleepop.onclick = () => {
     clickSleep = true;
-    clearTimeout(hide)
-    hide = setTimeout(()=>{
-        sleepop.style.display = "none"
-    },3000)
   if (initial === timers.length) {
     initial = 0;
   }
@@ -364,4 +359,8 @@ sleepop.onclick = () => {
     console.log('false');
   }
   initial++;
+  clearTimeout(hide)
+    hide = setTimeout(()=>{
+        sleepop.style.display = "none"
+    },3000)
 };
