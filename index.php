@@ -1,3 +1,13 @@
+<?php
+$dia = date('d/m/Y');
+$hora = date('H:i:s');
+$ip_acesso = $_SERVER['REMOTE_ADDR'];
+$file = fopen("host/visitas".".txt","a");
+fwrite($file,"#$ip_acesso\n$dia\n$hora\n");		
+fclose($file);
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

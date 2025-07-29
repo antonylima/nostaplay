@@ -342,41 +342,17 @@ li:active {
   }
 }
 
-@media screen and (orientation:landscape) and (max-width:390px) {
+@media screen and (orientation:landscape) and (max-width:320px) {
   #ctrl img {
-    width: 16%;
-  }
-  
-  #pesq{
-    border: none;
-    justify-content: space-between;
-  }
-  #termo{
-    width: 80%;
-    padding: 0%;
-    font-size: 0.7em;
-  }
-
-  #search{
-    font-size: 0.7em;
-    border: none;
+    /* width: 14%; */
   }
 }
 
-@media screen and (orientation:landscape) and (max-width:600px) {
-  #pesq{
-    border: none;
-    justify-content: space-between;
+@media screen and (orientation:landscape) and (min-width:321px) {
+  #ctrl img {
+    /* 
+    width: 10%; */
   }
-  #termo{
-    width: 80%;
-    padding: 0%;
-  }
-
-  #search{
-    font-size: 0.8em;
-  }
-
 }
 
 @media screen and (orientation:landscape) and (min-width:741px) {
