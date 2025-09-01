@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 //console.log(bdh, "-", bdh2, window.getComputedStyle(master).display)
 //footer.style.height = fth + "px";
-const url = "https://nostaplay.com/api.php";
+const url = "https://nostaplay.com/v1/api.php";
 //const url = "http://localhost:8000/api.php";
 fetch(url)
     .then(response => response.json())
@@ -206,12 +206,12 @@ function repeat() {
 function startPause() {
     if (start == true) {
         if (!pausa) {
-            pp.src = "assets/img/play.png";
+            //pp.src = "assets/img/play.png";
             song.pause();
             pausa = true;
         }
         else {
-            pp.src = "assets/img/pause.png";
+            //pp.src = "assets/img/pause.png";
             song.play();
             pausa = false
         }
@@ -220,7 +220,6 @@ function startPause() {
 function stop() {
     if (start) {
         song.pause()
-        pp.src = "assets/img/pause.png";
         song.currentTime = 0
         panel.innerHTML = "Bye bye";
         song.src = fonte
@@ -230,7 +229,6 @@ function stop() {
         start = false
         pausa = false
         rptctrl = false
-        rpt.src = "assets/img/rptoff.png"
     }
 }
 function next() {

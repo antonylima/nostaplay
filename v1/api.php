@@ -5,7 +5,7 @@ $ip_acesso = $_SERVER['REMOTE_ADDR'];
 $file = fopen("host/visitas".".txt","a");
 fwrite($file,"#$ip_acesso\n$dia\n$hora\n");		
 fclose($file);
-$raiz = "SONGS/";
+$raiz = "../music/";
 function period($v)
 {
     if ($v !== "." && $v !== "..") {
@@ -25,10 +25,14 @@ function scan($folder)
                         $songs = scandir($folder . $i);
                         unset($songs[0]);
                         unset($songs[1]);
+			foreach($songs as $k => $v){
+                            if(substr($songs[$k],-3) !== "mp3"){
+                                unset($songs[$k]);
+                            }
+                        }
                         $songs = array_values($songs);
                         $GLOBALS["db"][$folder . $i . "/"] = $songs;
                         $GLOBALS["db"][$folder . $i . "/"] = $songs;
-
                     }
 
                     $folders[] = $folder . $i . "/";
