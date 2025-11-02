@@ -18,7 +18,7 @@ fclose($file);
     <link rel="icon" type="image/x-icon" href="assets/img/play.png">
     <link rel="stylesheet" href="assets/style/style.css" type="text/css">
     <link rel="stylesheet" href="assets/style/normalize.css" type="text/css">
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/png">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-ico">
 </head>
 
 <body>
