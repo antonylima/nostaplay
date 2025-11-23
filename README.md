@@ -29,7 +29,7 @@ Feito com café ☕, dedicação e um toque de nostalgia 🎶
 
 Developed by [Sulivando Lima / Antonio Lima]. Feel free to connect\!
 
-  * Sulivando: [https://sulivando.com.br](https://www.google.com/search?q=sulivando.com)
+  * Sulivando: [https://sulivando.com.br](https://sulivando.com.br)
 
 -----
 
