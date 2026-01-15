@@ -14,14 +14,60 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 //console.log(bdh, "-", bdh2, window.getComputedStyle(master).display)
 //footer.style.height = fth + "px";
-const url = "https://nostaplay.com/api.php";
-//const url = "http://localhost:8000/api.php";
+//const url = "https://nostaplay.com/api/api.php";
+//const url = "http://192.168.3.101:8000/api/api.php";
+const url = "https://latemsom.com.br/api/api.php"
+//const url = "http://localhost:8000/api/api.php";
 fetch(url)
-    .then(response => response.json())
+    .then(async (response) => {
+        const contentType = response.headers.get('content-type') || '';
+        const buffer = await response.arrayBuffer();
+        let text;
+        if (/charset=iso-8859-1|charset=latin1|charset=windows-1252/i.test(contentType)) {
+            text = new TextDecoder('iso-8859-1').decode(buffer);
+        } else {
+            text = new TextDecoder('utf-8').decode(buffer);
+            if (text.includes('�')) {
+                text = new TextDecoder('iso-8859-1').decode(buffer);
+            }
+        }
+        return JSON.parse(text);
+    })
     .then(data => {
         jsondb = data;
+        jsondbEntries = buildEntries(data);
     })
     .catch(error => console.error('Erro:', error));
+
+function fixMojibake(value) {
+    if (typeof value !== 'string') {
+        return value;
+    }
+    if (!/[ÃÂ�]/.test(value)) {
+        return value;
+    }
+    const bytes = Uint8Array.from(value, (ch) => ch.charCodeAt(0));
+    return new TextDecoder('utf-8').decode(bytes);
+}
+
+function buildEntries(data) {
+    return Object.keys(data).map((rawKey) => ({
+        rawKey,
+        displayKey: fixMojibake(rawKey),
+    }));
+}
+
+function displayTitleFromKey(key) {
+    return key
+        .substring(0, key.length - 1)
+        .substring(
+            key.substring(0, key.length - 1).lastIndexOf('/') + 1
+        );
+}
+
+function displayTrackName(track) {
+    return fixMojibake(track.substring(0, track.length - 4));
+}
 
 let albumDir = "";
 let albumTracks = "";
@@ -39,6 +85,7 @@ let tempo = song.duration;
 let start = false;
 let pausa = false
 var inc = 0
+let albumDisplayName = "";
 let chave1 = "";
 let chave2 = "";
 let chave3 = "";
@@ -47,6 +94,7 @@ let testador = null
 let albumDirx = ''
 let busca = false
 let rptctrl = false;
+let jsondbEntries = [];
 //termo.activeElement = true;
 termo.addEventListener("focus", function () {
     document.addEventListener("keyup", function (e) {
@@ -74,46 +122,53 @@ function search() {
         chave2 = termo.value.toLowerCase();
         chave3 = termo.value;
         chave4 = termo.value.replace(/^./, termo.value[0].toUpperCase());
-        for (let i in jsondb) {
-            if (i.includes(`${chave1}`) || i.includes(`${chave2}`) || i.includes(`${chave3}`) || i.includes(`${chave4}`)) {
+        for (const entry of jsondbEntries) {
+            const displayKey = entry.displayKey;
+            const rawKey = entry.rawKey;
+            if (
+                displayKey.includes(`${chave1}`) ||
+                displayKey.includes(`${chave2}`) ||
+                displayKey.includes(`${chave3}`) ||
+                displayKey.includes(`${chave4}`) ||
+                rawKey.includes(`${chave1}`) ||
+                rawKey.includes(`${chave2}`) ||
+                rawKey.includes(`${chave3}`) ||
+                rawKey.includes(`${chave4}`)
+            ) {
                 testador = true
                 termo.value = null;
                 console.log("Resutados:")
-                arrayList.push(i);
+                arrayList.push(entry);
             }
         }
         if (testador === false) {
             console.log("Nothing found")
         }
         console.log(arrayList.length);
-        arrayList.sort();
+        arrayList.sort((a, b) => a.displayKey.localeCompare(b.displayKey, 'pt-BR', { sensitivity: 'base' }));
         for (let alb in arrayList) {
-            //console.log(arrayList[alb]);
+            const entry = arrayList[alb];
             var item = document.createElement('li')
-            var texto = arrayList[alb].substring(
-                0, arrayList[alb].length - 1)
-                .substring(
-                    arrayList[alb].substring(
-                        0, arrayList[alb].length - 1)
-                        .lastIndexOf('/') + 1
-                )
+            var texto = displayTitleFromKey(entry.displayKey)
             texto = texto.toUpperCase().split(' ');
-            if (jsondb[arrayList[alb]]) {
-                //console.log("same below: ",jsondb[arrayList[alb]])
+            if (jsondb[entry.rawKey]) {
+                //console.log("same below: ",jsondb[entry.rawKey])
                 var newtxt = tratar(texto);
                 item.textContent = newtxt;
                 item.addEventListener("click", function () {
-                    pasta = "";
+		const baseUrl = url.replace('/api/api.php', '');
+		pasta = baseUrl + "/";                    	
                     inc = 0
-                    albumDir = pasta + arrayList[alb];
+                    albumDir = pasta + entry.rawKey;
                     //console.log("album: ",albumDir);
-                    albumTracks = jsondb[arrayList[alb]]//.sort()//(a,b)=>a.localeCompare(b));
+                    albumTracks = jsondb[entry.rawKey]//.sort()//(a,b)=>a.localeCompare(b));
                     //console.log("same above: ",albumTracks);
                     faixa = albumTracks[0];
                     //console.log("faixa: ",faixa)
                     pasta = albumDir.substring(0, albumDir.length - 1);
                     //console.log(pasta);
-                    display = newtxt + ' - ' + faixa.substring(0, faixa.length - 4)
+                    albumDisplayName = newtxt;
+                    display = albumDisplayName + ' - ' + displayTrackName(faixa);
                     fonte = pasta + '/' + faixa;
                     //console.log("fonte: ", fonte);
                     startPlay();
@@ -154,7 +209,7 @@ function startPlay() {
     if (busca == true && albumTracks[0]) {
         song.src = fonte
         start = true;
-        display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
+        display = albumDisplayName + ' - ' + displayTrackName(faixa);
         panel.innerHTML = display;
         song.play();
         autonext();
@@ -169,7 +224,7 @@ function autonext() {
                 } else {
                     inc = 0;
                     faixa = albumTracks[inc];
-                    display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
+                    display = albumDisplayName + ' - ' + displayTrackName(faixa);
                     panel.innerHTML = display
                     //console.log(display);
                     song.src = pasta + '/' + faixa;
@@ -179,7 +234,7 @@ function autonext() {
             else {
                 inc++
                 faixa = albumTracks[inc];
-                display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
+                display = albumDisplayName + ' - ' + displayTrackName(faixa);
                 panel.innerHTML = display
                 //console.log(display);
                 song.src = pasta + '/' + faixa;
@@ -206,12 +261,12 @@ function repeat() {
 function startPause() {
     if (start == true) {
         if (!pausa) {
-            pp.src = "assets/img/play.png";
+            //pp.src = "assets/img/play.png";
             song.pause();
             pausa = true;
         }
         else {
-            pp.src = "assets/img/pause.png";
+            //pp.src = "assets/img/pause.png";
             song.play();
             pausa = false
         }
@@ -243,7 +298,7 @@ function next() {
             inc++
             faixa = albumTracks[inc];
         }
-        display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
+        display = albumDisplayName + ' - ' + displayTrackName(faixa);
         panel.innerHTML = display
         song.src = pasta + '/' + faixa;
         song.play();
@@ -259,7 +314,7 @@ function previous() {
             inc--
             faixa = albumTracks[inc];
         }
-        display = pasta.substring(pasta.lastIndexOf('/') + 1) + ' - ' + faixa.substring(0, faixa.length - 4);
+        display = albumDisplayName + ' - ' + displayTrackName(faixa);
         panel.innerHTML = display
         song.src = pasta + '/' + faixa;
         song.play();
@@ -301,3 +356,66 @@ function tratar(text) {
     }
     return newtxt;
 }
+
+var sto0 = null;
+let initial = 1;
+var sto = null;
+var hide = null;
+var clickSleep = false;
+const timers = [
+  'OFF',
+  900000,
+  1800000,
+  3600000,
+  5400000,
+  7200000,
+  9000000,
+  10800000,
+];
+
+set.onclick = ()=>{
+    opc.style.display = "block";
+    setTimeout(()=>{
+        opc.style.display = "none";
+    },5000)
+}
+sleepmn.onclick = ()=>{
+    sleepop.style.display = "block";
+    clickSleep = false;
+    clearInterval(sto0)
+    sto0 = setTimeout(()=>{
+        if(clickSleep !== true){
+            sleepop.style.display = "none";
+        }
+    },5000)
+    
+}
+//let stts = false;
+sleepop.onclick = () => {
+    clickSleep = true;
+  if (initial === timers.length) {
+    initial = 0;
+  }
+  if (timers[initial] !== timers[0]) {
+    sleepop.innerHTML = timers[initial] / 1000 / 60;
+    //stts = true;
+    console.log('true');
+    clearTimeout(sto);
+    sto = setTimeout(() => {
+      stop();
+      console.log('Bye');
+      initial = initial = 0;
+      sleepop.innerHTML = timers[0];
+      initial++;
+    }, timers[initial]);
+  } else {
+    sleepop.innerHTML = timers[initial];
+    //stts = false;
+    console.log('false');
+  }
+  initial++;
+  clearTimeout(hide)
+    hide = setTimeout(()=>{
+        sleepop.style.display = "none"
+    },3000)
+};
