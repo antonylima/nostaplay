@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 //console.log(bdh, "-", bdh2, window.getComputedStyle(master).display)
 //footer.style.height = fth + "px";
-//const url = "https://nostaplay.com/api/api.php";
+const url = "https://nostaplay.com/api/api.php";
 //const url = "http://192.168.3.101:8000/api/api.php";
-const url = "https://latemsom.com.br/api/api.php"
+//const url = "https://latemsom.com.br/api/api.php"
 //const url = "http://localhost:8000/api/api.php";
 fetch(url)
     .then(async (response) => {
