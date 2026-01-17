@@ -94,15 +94,17 @@ body {
   position: fixed;
   top: 0;
   z-index: 1;
-  /* background-image: linear-gradient(gray, white, gray); */
-  background-image: url("../img/nt2.png");
+  background-image:
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("../img/nt2.png");
   background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   left: 0%;
-  height: auto;
   width: 96%;
 }
+
 
 #main {
   /* background-color: gray; */
