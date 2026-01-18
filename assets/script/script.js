@@ -265,12 +265,10 @@ function search() {
     }
 }
 
-// Orientação
-window.screen.orientation.onchange = () => {
+const applyResultOffset = () => {
     if (!result) return;
-    
-    if (window.screen.orientation.type === "portrait-primary" ||
-        window.screen.orientation.type === "portrait-secondary") {
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+    if (isPortrait) {
         const offset = getResultOffsetPx();
         if (offset) {
             rmp = offset;
@@ -280,6 +278,14 @@ window.screen.orientation.onchange = () => {
         result.style.marginTop = "1%";
     }
 };
+
+// Orientação
+if (window.screen.orientation && window.screen.orientation.addEventListener) {
+    window.screen.orientation.addEventListener("change", applyResultOffset);
+} else if (window.screen.orientation) {
+    window.screen.orientation.onchange = applyResultOffset;
+}
+window.addEventListener("resize", applyResultOffset);
 
 function startPlay() {
     if (!busca || !albumTracks[0] || !song) return;
