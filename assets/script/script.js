@@ -21,12 +21,6 @@ let jsondbEntries = [];
 
 const url = "https://nostaplay.com/api/api.php";
 //const url = "http://localhost:8000/api/api.php";
-const getResultOffsetPx = () => {
-    const deepmain = document.querySelector('#deepmain');
-    if (!deepmain) return null;
-    const gap = Math.min(Math.max(6, Math.round(window.innerHeight * 0.012)), 14);
-    return deepmain.offsetHeight + gap;
-};
 // Bug fix: Mover inicializações para DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
     // Inicializar elementos do DOM
@@ -52,9 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Verificar orientação inicial
     if (screen.orientation.type === "portrait-primary" || 
         screen.orientation.type === "portrait-secondary") {
-        const offset = getResultOffsetPx();
-        if (offset && res) {
-            rmp = offset;
+        if (dmh && res) {
+            rmp = dmh + 10;
             res.style.marginTop = rmp + "px";
         }
     }
@@ -190,9 +183,8 @@ function search() {
     
     if (screen.orientation.type === "portrait-primary" || 
         screen.orientation.type === "portrait-secondary") {
-        const offset = getResultOffsetPx();
-        if (offset && result) {
-            rmp = offset;
+        if (dmh && result) {
+            rmp = dmh + 10;
             result.style.marginTop = rmp + "px";
         }
     }
@@ -265,27 +257,17 @@ function search() {
     }
 }
 
-const applyResultOffset = () => {
+// Orientação
+window.screen.orientation.onchange = () => {
     if (!result) return;
-    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
-    if (isPortrait) {
-        const offset = getResultOffsetPx();
-        if (offset) {
-            rmp = offset;
-            result.style.marginTop = rmp + "px";
-        }
+    
+    if (window.screen.orientation.type === "portrait-primary" ||
+        window.screen.orientation.type === "portrait-secondary") {
+        if (rmp) result.style.marginTop = rmp + "px";
     } else {
         result.style.marginTop = "1%";
     }
 };
-
-// Orientação
-if (window.screen.orientation && window.screen.orientation.addEventListener) {
-    window.screen.orientation.addEventListener("change", applyResultOffset);
-} else if (window.screen.orientation) {
-    window.screen.orientation.onchange = applyResultOffset;
-}
-window.addEventListener("resize", applyResultOffset);
 
 function startPlay() {
     if (!busca || !albumTracks[0] || !song) return;

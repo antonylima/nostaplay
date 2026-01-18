@@ -71,7 +71,7 @@
 
 body {
   background-color: black;
-  font-size: clamp(16px, 2.1vw, 20px);
+  font-size: 20px;
 
 }
 
@@ -90,7 +90,7 @@ body {
 }
 
 #deepmain {
-  padding: clamp(10px, 2vw, 22px);
+  padding: 2%;
   position: fixed;
   top: 0;
   z-index: 1;
@@ -141,14 +141,14 @@ body {
   background-color: black;
   color: greenyellow;
   width: 99%;
-  margin-top: clamp(8px, 2.2vh, 24px);
+  margin-top: 3%;
   height: auto;
 }
 
 marquee {
-  padding-top: clamp(6px, 1.6vh, 16px);
+  padding-top: 2%;
   width: 100%;
-  font-size: clamp(0.85em, 1.2vw, 1.1em);
+  font-size: auto;
   text-transform: uppercase;
   font-family: uc, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -159,7 +159,7 @@ marquee {
   flex-direction: row;
   align-items: center;
   width: 95%;
-  padding: clamp(8px, 2vw, 20px);
+  padding: 2%;
 }
 
 #ctrl {
@@ -177,11 +177,11 @@ marquee {
   justify-content: space-evenly;
   justify-items: center;
   align-items: center;
-  padding: clamp(6px, 1.6vw, 18px);
+  padding: 2%;
 }
 
 #ctrl img {
-  width: clamp(36px, 9vw, 64px);
+  width: 10%;
   height: auto;
 }
 
@@ -203,18 +203,16 @@ marquee {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding-top: clamp(8px, 1.8vh, 18px);
+  padding-top: 2%;
   box-sizing: border-box;
   align-items: center;
 }
 
 #termo {
   height: auto;
-  width: min(60%, 440px);
+  width: 60%;
   outline: 1px solid blue;
-  font-size: clamp(0.85em, 1.6vw, 1.1em);
-  padding: 0.3em 0.6em;
-  box-sizing: border-box;
+  font-size: auto;
 }
 
 #termo:focus {
@@ -225,12 +223,12 @@ marquee {
   height: auto;
   width: fit-content;
   cursor: pointer;
-  margin-left: clamp(6px, 1.2vw, 16px);
+  margin-left: 2%;
   line-height: 100%;
   background-color: blue;
   border: 1px red solid;
-  font-size: clamp(0.85em, 1.6vw, 1.1em);
-  padding: 0.35em 0.75em;
+  font-size: auto;
+  padding: 0.5%;
   color: aliceblue;
   user-select: none;
 }
@@ -247,11 +245,10 @@ li {
   width: fit-content;
   color: aliceblue;
   list-style-type: none;
-  padding: 0.35em 0;
+  padding: 1% 0 1% 0;
   text-wrap: nowrap;
   height: fit-content;
-  margin-bottom: 0.35em;
-  font-size: clamp(0.9em, 1.8vw, 1.1em);
+  margin-bottom: 1%;
   
 }
 
@@ -296,7 +293,7 @@ li:active {
   z-index: 2;
   left: 0%;
   bottom: 0%;
-  height: clamp(56px, 10vh, 90px)
+  height: 10vh
 }
 
 
@@ -414,283 +411,6 @@ li:active {
   }
 }
 
-@media screen and (max-width: 600px) {
-  body {
-    font-size: 16px;
-  }
-
-  #deepmain {
-    padding: 12px;
-  }
-
-  #info {
-    margin-top: 10px;
-  }
-
-  marquee {
-    padding-top: 6px;
-    font-size: 0.9em;
-  }
-
-  #cs {
-    padding: 10px;
-  }
-
-  .ctrl {
-    padding: 8px;
-  }
-
-  #pesq {
-    padding-top: 8px;
-  }
-
-  #termo {
-    font-size: 0.9em;
-    padding: 0.3em 0.6em;
-  }
-
-  #search {
-    font-size: 0.9em;
-    padding: 0.35em 0.7em;
-    margin-left: 8px;
-  }
-
-  li {
-    font-size: 0.95em;
-    padding: 0.3em 0;
-    margin-bottom: 0.3em;
-  }
-
-  #opc {
-    font-size: 0.95em;
-    padding: 0.6em 0.8em;
-  }
-
-  #sleepop {
-    font-size: 1.4em;
-    padding: 0.8em 1em;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  body {
-    font-size: 15px;
-  }
-
-  #deepmain {
-    padding: 10px;
-  }
-
-  marquee {
-    font-size: 0.85em;
-  }
-
-  #cs {
-    padding: 8px;
-  }
-
-  #pesq {
-    padding-top: 6px;
-  }
-
-  #termo {
-    font-size: 0.85em;
-  }
-
-  #search {
-    font-size: 0.85em;
-    padding: 0.3em 0.6em;
-  }
-
-  li {
-    font-size: 0.9em;
-  }
-
-  #sleepop {
-    font-size: 1.3em;
-    padding: 0.7em 0.9em;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  body {
-    font-size: 14px;
-  }
-
-  #deepmain {
-    padding: 8px;
-  }
-
-  marquee {
-    font-size: 0.8em;
-    padding-top: 5px;
-  }
-
-  #cs {
-    padding: 6px;
-  }
-
-  .ctrl {
-    padding: 6px;
-  }
-
-  #pesq {
-    padding-top: 5px;
-  }
-
-  #termo {
-    font-size: 0.8em;
-    padding: 0.25em 0.5em;
-  }
-
-  #search {
-    font-size: 0.8em;
-    padding: 0.25em 0.5em;
-    margin-left: 6px;
-  }
-
-  li {
-    font-size: 0.85em;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  body {
-    font-size: 20px;
-  }
-
-  #deepmain {
-    padding: 20px;
-  }
-
-  marquee {
-    font-size: 1.05em;
-  }
-
-  #cs {
-    padding: 18px;
-  }
-
-  .ctrl {
-    padding: 16px;
-  }
-
-  #pesq {
-    padding-top: 16px;
-  }
-
-  #termo {
-    font-size: 1.05em;
-  }
-
-  #search {
-    font-size: 1.05em;
-    padding: 0.4em 0.8em;
-  }
-
-  li {
-    font-size: 1.1em;
-  }
-
-  #sleepop {
-    font-size: 1.8em;
-    padding: 0.9em 1.1em;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  body {
-    font-size: 21px;
-  }
-
-  #deepmain {
-    padding: 22px;
-  }
-
-  #cs {
-    padding: 20px;
-  }
-
-  .ctrl {
-    padding: 18px;
-  }
-
-  #pesq {
-    padding-top: 18px;
-  }
-
-  li {
-    font-size: 1.15em;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  body {
-    font-size: 22px;
-  }
-
-  #deepmain {
-    padding: 24px;
-  }
-
-  #cs {
-    padding: 22px;
-  }
-
-  #pesq {
-    padding-top: 20px;
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  body {
-    font-size: 23px;
-  }
-
-  #deepmain {
-    padding: 26px;
-  }
-
-  marquee {
-    font-size: 1.1em;
-  }
-
-  #cs {
-    padding: 24px;
-  }
-
-  #pesq {
-    padding-top: 22px;
-  }
-
-  #sleepop {
-    font-size: 2em;
-  }
-}
-
-@media screen and (min-width: 2560px) {
-  body {
-    font-size: 24px;
-  }
-
-  #deepmain {
-    padding: 28px;
-  }
-
-  #cs {
-    padding: 26px;
-  }
-
-  #pesq {
-    padding-top: 24px;
-  }
-
-  #sleepop {
-    font-size: 2.2em;
-    padding: 1em 1.2em;
-  }
-}
-
 /* 
 @media screen and (orientation:landscape) and (min-width:1366px){
    #ctrl img{
@@ -703,8 +423,8 @@ li:active {
   width: fit-content;
   height: fit-content;
   position: fixed;
-  bottom: clamp(8px, 2vh, 20px);
-  right: clamp(12px, 5vw, 32px);
+  bottom: 2vh;
+  right: 5vw;
   color: darkgreen;
   text-decoration: none;
   z-index: 3;
@@ -719,7 +439,7 @@ li:active {
 }
 
 #set{
-  height: clamp(32px, 7vh, 60px);
+  height: 70%;
   width:auto;
   transform: translateY(30%);
 }
@@ -734,8 +454,8 @@ li:active {
   color:black;
   width: fit-content;
   height: fit-content;
-  padding: 0.6em 0.8em;
-  font-size: clamp(0.9em, 1.8vw, 1.05em);
+  padding: 1%;
+  font-size: medium;
   border-radius: 0 20% 0 0;
 }
 
@@ -758,10 +478,10 @@ li:active {
   background-color: blue;
   height: fit-content;
   width: fit-content;
-  font-size: clamp(1.2em, 3vw, 2em);
+  font-size: 2em;
   color:white;
   z-index: 4;
-  padding: 0.8em 1.1em;
+  padding: 2%;
   border-radius: 20%;
   box-sizing: border-box;
   user-select: none;
