@@ -20,7 +20,7 @@ let jsondb = null;
 let jsondbEntries = [];
 
 const url = "https://nostaplay.com/api/api.php";
-
+//const url = "http://localhost:8000/api/api.php";
 // Bug fix: Mover inicializações para DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
     // Inicializar elementos do DOM

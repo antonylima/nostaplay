@@ -1,6 +1,6 @@
 <?php
-$raiz = "../music/";
-//$raiz = "/mnt/storage/songs"
+//$raiz = "../music/";
+$raiz = "/mnt/storage/songs/";
 function period($v)
 {
     if ($v !== "." && $v !== "..") {
