@@ -56,6 +56,7 @@ fclose($file);
 
         </div>
         <div id="res">
+            <div id="loading" class="loader" style="display: block;"></div>
         </div>
     </div>
     <div id="sleepop">

@@ -27,31 +27,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const deepmain = document.querySelector('#deepmain');
     const footer = document.querySelector('#footer');
     const res = document.querySelector('#res');
-    
+
     if (deepmain && footer) {
         dmh = deepmain.offsetHeight;
         fth = footer.offsetHeight;
     }
-    
+
     bdh = window.screen.height;
     bdh2 = window.screen.availHeight;
-    
+
     termo = document.querySelector('#termo');
     song = document.querySelector('#song');
     panel = document.querySelector("#painel");
     mq = document.querySelector("#mq");
     result = document.querySelector("#res");
     rpt = document.querySelector("#repeat");
-    
+
     // Verificar orientação inicial
-    if (screen.orientation.type === "portrait-primary" || 
+    if (screen.orientation.type === "portrait-primary" ||
         screen.orientation.type === "portrait-secondary") {
         if (dmh && res) {
             rmp = dmh + 10;
             res.style.marginTop = rmp + "px";
         }
     }
-    
+
     // Event listeners
     if (termo) {
         termo.value = "";
@@ -61,24 +61,24 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-    
+
     const prevBtn = document.querySelector("#prev");
     const nextBtn = document.querySelector("#next");
-    
+
     if (prevBtn) prevBtn.addEventListener('click', previous);
     if (nextBtn) nextBtn.addEventListener('click', next);
-    
+
     // Bug fix: Adicionar listener para ended em vez de setInterval
     if (song) {
         song.addEventListener('ended', handleSongEnded);
     }
-    
+
     // Sleep timer elements
     const set = document.querySelector('#set');
     const opc = document.querySelector('#opc');
     const sleepmn = document.querySelector('#sleepmn');
     const sleepop = document.querySelector('#sleepop');
-    
+
     if (set && opc) {
         set.onclick = () => {
             opc.style.display = "block";
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }, 5000);
         };
     }
-    
+
     if (sleepmn && sleepop) {
         setupSleepTimer(sleepmn, sleepop);
     }
@@ -138,8 +138,13 @@ fetch(url)
     .then(data => {
         jsondb = data;
         jsondbEntries = buildEntries(data);
+        loadLibrary();
     })
-    .catch(error => console.error('Erro:', error));
+    .catch(error => {
+        console.error('Erro:', error);
+        const loader = document.querySelector('#loading');
+        if (loader) loader.textContent = "Erro ao carregar.";
+    });
 
 function fixMojibake(value) {
     if (typeof value !== 'string') {
@@ -171,66 +176,27 @@ function displayTrackName(track) {
     return fixMojibake(track.substring(0, track.length - 4));
 }
 
-function search() {
-    if (!termo || !termo.value || !jsondb) return;
-    
-    busca = true;
-    if (result) result.innerHTML = "";
-    console.clear();
-    
-    const arrayList = [];
+function renderList(arrayList) {
+    if (!result) return;
+    result.innerHTML = "";
     const lista = document.createElement('ul');
-    
-    if (screen.orientation.type === "portrait-primary" || 
+
+    if (screen.orientation.type === "portrait-primary" ||
         screen.orientation.type === "portrait-secondary") {
         if (dmh && result) {
             rmp = dmh + 10;
             result.style.marginTop = rmp + "px";
         }
     }
-    
-    if (result) result.appendChild(lista);
-    testador = false;
-    
-    console.log('Termo pesquisado: ' + termo.value);
-    chave1 = termo.value.toUpperCase();
-    chave2 = termo.value.toLowerCase();
-    chave3 = termo.value;
-    chave4 = termo.value.replace(/^./, termo.value[0].toUpperCase());
-    
-    for (const entry of jsondbEntries) {
-        const displayKey = entry.displayKey;
-        const rawKey = entry.rawKey;
-        if (
-            displayKey.includes(chave1) ||
-            displayKey.includes(chave2) ||
-            displayKey.includes(chave3) ||
-            displayKey.includes(chave4) ||
-            rawKey.includes(chave1) ||
-            rawKey.includes(chave2) ||
-            rawKey.includes(chave3) ||
-            rawKey.includes(chave4)
-        ) {
-            testador = true;
-            arrayList.push(entry);
-        }
-    }
-    
-    termo.value = ""; // Bug fix: movido para depois do loop
-    
-    if (!testador) {
-        console.log("Nothing found");
-    }
-    
-    console.log(arrayList.length);
-    arrayList.sort((a, b) => a.displayKey.localeCompare(b.displayKey, 'pt-BR', { sensitivity: 'base' }));
-    
+
+    result.appendChild(lista);
+
     for (let alb in arrayList) {
         const entry = arrayList[alb];
         const item = document.createElement('li');
         let texto = displayTitleFromKey(entry.displayKey);
         texto = texto.toUpperCase().split(' ');
-        
+
         if (jsondb[entry.rawKey]) {
             const newtxt = tratar(texto);
             item.textContent = newtxt;
@@ -250,17 +216,69 @@ function search() {
             lista.appendChild(item);
         }
     }
-    
-    // Adicionar espaçamento extra
+
     for (let i = 1; i < 11; i++) {
         lista.appendChild(document.createElement("li"));
     }
 }
 
+function loadLibrary() {
+    if (!jsondbEntries) return;
+    busca = true;
+    const arrayList = [...jsondbEntries];
+    arrayList.sort((a, b) => a.displayKey.localeCompare(b.displayKey, 'pt-BR', { sensitivity: 'base' }));
+    renderList(arrayList);
+}
+
+function search() {
+    if (!termo || !termo.value || !jsondb) return;
+
+    busca = true;
+    console.clear();
+
+    const arrayList = [];
+    testador = false;
+
+    console.log('Termo pesquisado: ' + termo.value);
+    chave1 = termo.value.toUpperCase();
+    chave2 = termo.value.toLowerCase();
+    chave3 = termo.value;
+    chave4 = termo.value.replace(/^./, termo.value[0].toUpperCase());
+
+    for (const entry of jsondbEntries) {
+        const displayKey = entry.displayKey;
+        const rawKey = entry.rawKey;
+        if (
+            displayKey.includes(chave1) ||
+            displayKey.includes(chave2) ||
+            displayKey.includes(chave3) ||
+            displayKey.includes(chave4) ||
+            rawKey.includes(chave1) ||
+            rawKey.includes(chave2) ||
+            rawKey.includes(chave3) ||
+            rawKey.includes(chave4)
+        ) {
+            testador = true;
+            arrayList.push(entry);
+        }
+    }
+
+    termo.value = "";
+
+    if (!testador) {
+        console.log("Nothing found");
+    }
+
+    console.log(arrayList.length);
+    arrayList.sort((a, b) => a.displayKey.localeCompare(b.displayKey, 'pt-BR', { sensitivity: 'base' }));
+
+    renderList(arrayList);
+}
+
 // Orientação
 window.screen.orientation.onchange = () => {
     if (!result) return;
-    
+
     if (window.screen.orientation.type === "portrait-primary" ||
         window.screen.orientation.type === "portrait-secondary") {
         if (rmp) result.style.marginTop = rmp + "px";
@@ -271,7 +289,7 @@ window.screen.orientation.onchange = () => {
 
 function startPlay() {
     if (!busca || !albumTracks[0] || !song) return;
-    
+
     song.src = fonte;
     start = true;
     display = albumDisplayName + ' - ' + displayTrackName(faixa);
@@ -281,14 +299,14 @@ function startPlay() {
 
 function repeat() {
     if (!busca || !rpt) return;
-    
+
     rptctrl = !rptctrl;
     rpt.src = rptctrl ? "assets/img/rpton.png" : "assets/img/rptoff.png";
 }
 
 function startPause() {
     if (!start || !song) return;
-    
+
     if (!pausa) {
         song.pause();
         pausa = true;
@@ -300,7 +318,7 @@ function startPause() {
 
 function stop() {
     if (!start || !song) return;
-    
+
     song.pause();
     const pp = document.querySelector('#pp');
     if (pp) pp.src = "assets/img/pause.png";
@@ -318,7 +336,7 @@ function stop() {
 
 function next() {
     if (!start) return;
-    
+
     if (inc >= albumTracks.length - 1) {
         inc = 0;
     } else {
@@ -329,7 +347,7 @@ function next() {
 
 function previous() {
     if (!start) return;
-    
+
     if (inc <= 0) {
         inc = albumTracks.length - 1;
     } else {
@@ -390,7 +408,7 @@ function setupSleepTimer(sleepmn, sleepop) {
             }
         }, 5000);
     };
-    
+
     sleepop.onclick = () => {
         clickSleep = true;
         if (initial === timers.length) {
