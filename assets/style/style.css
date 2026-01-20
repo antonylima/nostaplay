@@ -249,7 +249,7 @@ li {
   text-wrap: nowrap;
   height: fit-content;
   margin-bottom: 1%;
-  
+
 }
 
 li:hover {
@@ -308,11 +308,11 @@ li:active {
 @media screen and (min-width:600px) {
   #ctrl img {}
 
-  #termo{
+  #termo {
     font-size: 1em;
   }
 
-   li{
+  li {
     font-size: 1.3em;
   }
 
@@ -349,34 +349,36 @@ li:active {
   #ctrl img {
     width: 16%;
   }
-  
-  #pesq{
+
+  #pesq {
     border: none;
     justify-content: space-between;
   }
-  #termo{
+
+  #termo {
     width: 80%;
     padding: 0%;
     font-size: 0.7em;
   }
 
-  #search{
+  #search {
     font-size: 0.7em;
     border: none;
   }
 }
 
 @media screen and (orientation:landscape) and (max-width:600px) {
-  #pesq{
+  #pesq {
     border: none;
     justify-content: space-between;
   }
-  #termo{
+
+  #termo {
     width: 80%;
     padding: 0%;
   }
 
-  #search{
+  #search {
     font-size: 0.8em;
   }
 
@@ -407,8 +409,7 @@ li:active {
 }
 
 @media screen and (orientation:landscape) and (min-width:1136px) and (max-width:1263px) {
-  #ctrl img {
-  }
+  #ctrl img {}
 }
 
 /* 
@@ -438,20 +439,20 @@ li:active {
   color: darkgreen;
 }
 
-#set{
+#set {
   height: 70%;
-  width:auto;
+  width: auto;
   transform: translateY(30%);
 }
 
-#opc{
+#opc {
   display: none;
   position: fixed;
   box-sizing: border-box;
   left: 0;
   bottom: 0;
   background-color: aliceblue;
-  color:black;
+  color: black;
   width: fit-content;
   height: fit-content;
   padding: 1%;
@@ -459,27 +460,27 @@ li:active {
   border-radius: 0 20% 0 0;
 }
 
-#opc li{
+#opc li {
   user-select: none;
-  color:black;
+  color: black;
 
 }
 
-#sleepmn:active{
+#sleepmn:active {
   color: brown;
 }
 
-#sleepop{
+#sleepop {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   display: none;
   background-color: blue;
   height: fit-content;
   width: fit-content;
   font-size: 2em;
-  color:white;
+  color: white;
   z-index: 4;
   padding: 2%;
   border-radius: 20%;
@@ -496,10 +497,28 @@ li:active {
   height: 50px;
   animation: spin 1s linear infinite;
   margin: 20px auto;
-  display: none; /* Hidden by default, shown via JS or HTML */
+  display: none;
+  /* Hidden by default, shown via JS or HTML */
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .loader {
+    position: fixed;
+    top: auto;
+    bottom: 35%;
+    left: 50%;
+    margin: 0 0 0 -25px;
+    /* Center horizontally by subtracting half of width (50px), avoids transform conflict with spin animation */
+    z-index: 5;
+  }
 }
