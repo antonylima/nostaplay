@@ -20,8 +20,8 @@ function scan($folder)
                         $songs = scandir($folder . $i);
                         unset($songs[0]);
                         unset($songs[1]);
-                        foreach ($songs as $k => $v) {
-                            if (substr($songs[$k], -3) !== "mp3") {
+			foreach($songs as $k => $v){
+                            if(substr($songs[$k],-3) !== "mp3"){
                                 unset($songs[$k]);
                             }
                         }
@@ -41,16 +41,16 @@ function scan($folder)
 
 }
 
-$api = json_encode(scan($raiz), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+$api = json_encode(scan($raiz));
 
-header('Content-Type: application/json; charset=utf-8');
+header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 
-$file = fopen("api" . ".json", "w");
-fwrite($file, $api);
+$file = fopen("api".".json","w");
+fwrite($file,$api);		
 fclose($file);
 
 echo $api;
