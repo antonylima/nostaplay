@@ -1,6 +1,7 @@
 <?php
 //$raiz = "../music/";
-$raiz = "/mnt/storage/songs/";
+//$raiz = "/mnt/storage/songs/";
+$raiz = "/run/media/vandol/files-ssd/SONGS/";
 function period($v)
 {
     if ($v !== "." && $v !== "..") {
@@ -20,8 +21,8 @@ function scan($folder)
                         $songs = scandir($folder . $i);
                         unset($songs[0]);
                         unset($songs[1]);
-			foreach($songs as $k => $v){
-                            if(substr($songs[$k],-3) !== "mp3"){
+                        foreach ($songs as $k => $v) {
+                            if (substr($songs[$k], -3) !== "mp3") {
                                 unset($songs[$k]);
                             }
                         }
@@ -49,8 +50,8 @@ header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
 
 
-$file = fopen("api".".json","w");
-fwrite($file,$api);		
+$file = fopen("api" . ".json", "w");
+fwrite($file, $api);
 fclose($file);
 
 echo $api;

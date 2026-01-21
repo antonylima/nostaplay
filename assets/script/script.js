@@ -19,8 +19,10 @@ let rptctrl = false;
 let jsondb = null;
 let jsondbEntries = [];
 
-const url = "https://nostaplay.com/api/api.php";
-//const url = "http://localhost:8000/api/api.php";
+//const url = "https://nostaplay.com/api/api.php";
+const url = "http://localhost:8001/api/api.php";
+//const url https://player.somnacity.com.br/api/api.php
+
 // Bug fix: Mover inicializações para DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
     // Inicializar elementos do DOM
@@ -129,9 +131,6 @@ fetch(url)
             text = new TextDecoder('iso-8859-1').decode(buffer);
         } else {
             text = new TextDecoder('utf-8').decode(buffer);
-            if (text.includes('ï¿½')) {
-                text = new TextDecoder('iso-8859-1').decode(buffer);
-            }
         }
         return JSON.parse(text);
     })
@@ -147,14 +146,7 @@ fetch(url)
     });
 
 function fixMojibake(value) {
-    if (typeof value !== 'string') {
-        return value;
-    }
-    if (!/[ÃƒÃ‚ï¿½]/.test(value)) {
-        return value;
-    }
-    const bytes = Uint8Array.from(value, (ch) => ch.charCodeAt(0));
-    return new TextDecoder('utf-8').decode(bytes);
+    return value;
 }
 
 function buildEntries(data) {
