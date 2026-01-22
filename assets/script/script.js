@@ -20,7 +20,7 @@ let jsondb = null;
 let jsondbEntries = [];
 
 //const url = "https://nostaplay.com/api/api.php";
-const url = "http://localhost:8001/api/api.php";
+const url = "http://localhost:8002/api/api.php";
 //const url https://player.somnacity.com.br/api/api.php
 
 // Bug fix: Mover inicializações para DOMContentLoaded
