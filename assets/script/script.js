@@ -20,8 +20,8 @@ let jsondb = null;
 let jsondbEntries = [];
 
 //const url = "https://nostaplay.com/api/api.php";
-const url = "http://localhost:8002/api/api.php";
-//const url https://player.somnacity.com.br/api/api.php
+//const url = "http://localhost:8002/api/api.php";
+const url = "https://player.somnacity.com.br/api/api.php";
 
 // Bug fix: Mover inicializações para DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
@@ -313,7 +313,7 @@ function stop() {
 
     song.pause();
     const pp = document.querySelector('#pp');
-    if (pp) pp.src = "assets/img/pause.png";
+    //if (pp) pp.src = "assets/img/pause.png";
     song.currentTime = 0;
     if (panel) panel.innerHTML = "Bye bye";
     song.src = fonte;

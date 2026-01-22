@@ -299,7 +299,8 @@ li:active {
 
 #set {
   position: absolute;
-  height: 50%;
+  left: 5px;
+  height: 70%;
   top: 50%;
   width: auto;
   transform: translateY(-50%);
@@ -320,6 +321,29 @@ li:active {
 
 #author:hover {
   color: rgb(4, 0, 255);
+}
+
+
+#opc {
+  display: none;
+  position: fixed;
+  box-sizing: border-box;
+  left: 0;
+  bottom: 0;
+  background-color: aliceblue;
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  padding: 3%;
+  font-size: medium;
+  border-radius: 0 20% 0 0;
+}
+
+#opc li {
+  user-select: none;
+  color: black;
+  padding-top: 5%;
+
 }
 
 @media screen and (orientation:landscape) {
@@ -352,6 +376,14 @@ li:active {
   line-height: 50%;
 
 }
+
+  #footer{
+    height: 7vh;
+  }
+
+  #opc{
+    padding: 1%;
+  }
 }
 
 @media screen and (min-width:380px) {
@@ -452,28 +484,6 @@ li:active {
   }
 } */
 
-
-
-#opc {
-  display: none;
-  position: fixed;
-  box-sizing: border-box;
-  left: 0;
-  bottom: 0;
-  background-color: aliceblue;
-  color: black;
-  width: fit-content;
-  height: fit-content;
-  padding: 1%;
-  font-size: medium;
-  border-radius: 0 20% 0 0;
-}
-
-#opc li {
-  user-select: none;
-  color: black;
-
-}
 
 #sleepmn:active {
   color: brown;
