@@ -113,7 +113,8 @@ function handleSongEnded() {
 // Bug fix: Função separada para tocar faixa
 function playTrack() {
     faixa = albumTracks[inc];
-    display = albumDisplayName + ' - ' + displayTrackName(faixa);
+    //display = albumDisplayName + ' - ' + displayTrackName(faixa);
+    display = displayTrackName(faixa);
     if (panel) panel.innerHTML = display;
     if (song) {
         song.src = pasta + '/' + faixa;
@@ -201,7 +202,8 @@ function renderList(arrayList) {
                 faixa = albumTracks[0];
                 pasta = albumDir.substring(0, albumDir.length - 1);
                 albumDisplayName = newtxt;
-                display = albumDisplayName + ' - ' + displayTrackName(faixa);
+               // display = albumDisplayName + ' - ' + displayTrackName(faixa);
+                display = displayTrackName(faixa);
                 fonte = pasta + '/' + faixa;
                 startPlay();
             });
@@ -284,7 +286,8 @@ function startPlay() {
 
     song.src = fonte;
     start = true;
-    display = albumDisplayName + ' - ' + displayTrackName(faixa);
+    //display = albumDisplayName + ' - ' + displayTrackName(faixa);
+    display = displayTrackName(faixa);
     if (panel) panel.innerHTML = display;
     song.play();
 }
