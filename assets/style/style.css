@@ -148,7 +148,7 @@ body {
 marquee {
   padding-top: 2%;
   width: 100%;
-  text-align: center
+  text-align: center;
   font-size: auto;
   text-transform: uppercase;
   font-family: uc, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
