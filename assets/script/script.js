@@ -431,3 +431,29 @@ function setupSleepTimer(sleepmn, sleepop) {
         }, 3000);
     };
 }
+// O navegador monitora QUALQUER áudio que comece a tocar na página
+document.addEventListener('play', (evento) => {
+  if ('mediaSession' in navigator) {
+    // Avisa o Android/iOS: "Tem áudio tocando, não durma!"
+    navigator.mediaSession.playbackState = "playing";
+  }
+}, true); // O 'true' garante que ele capture o play antes de qualquer outra função
+
+
+
+/*
+if ('mediaSession' in navigator) {
+
+  // Configura o botão AVANÇAR do celular
+  navigator.mediaSession.setActionHandler('nexttrack', () => {
+    suaFuncaoDeAvancar(); // Substitua pelo nome da sua função de próxima música
+  });
+
+  // Configura o botão VOLTAR do celular
+  navigator.mediaSession.setActionHandler('previoustrack', () => {
+    suaFuncaoDeVoltar(); // Substitua pelo nome da sua função de música anterior
+  });
+
+}
+
+*/
